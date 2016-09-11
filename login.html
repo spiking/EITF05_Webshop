@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#2196F3">
+    <title>MMM - Login</title>
+    <link rel="stylesheet" href="css/style-login.css">
+</head>
+
+<body>
+
+    <hgroup>
+        <h1>Magical Mobile Market</h1>
+        <hr width="250px">
+        <h3 id="title">Login</h3>
+    </hgroup>
+
+    <form action="index.html">
+        <div class="group" id="usernameDiv">
+            <input type="text"><span class="highlight"></span><span class="bar"></span>
+            <label>Name</label>
+
+        </div>
+        <div class="group" id="emailDiv" style="display:none;">
+            <input type="email"><span class="highlight"></span><span class="bar"></span>
+            <label>Email</label>
+        </div>
+        <div class="group" id="addressDiv" style="display:none;">
+            <input type="text"><span class="highlight"></span><span class="bar"></span>
+            <label>Address</label>
+        </div>
+
+        <div class="group" id="passwordDiv">
+            <input type="password"><span class="highlight"></span><span class="bar"></span>
+            <label>Password</label>
+        </div>
+        <button type="button" class="button buttonBlue" id="loginButton">Login
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+        <footer>
+            <font size="2px"><center><a href="#" onclick="showDiv()" style="color:#333333; text-decoration:none;" id="registerText">Don't have an account?</a></center></font>
+        </footer>
+    </form>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/login.js"></script>
+
+</body>
+
+<script>
+    function showDiv() {
+        document.getElementById('emailDiv').style.display = "block"
+        document.getElementById('addressDiv').style.display = "block"
+        document.getElementById('registerText').onclick = hideDiv;
+        document.getElementById('registerText').innerHTML = "Already have an account?"
+        document.getElementById('title').innerHTML = 'Sign Up'
+        document.getElementById('loginButton').innerHTML = 'Sign Up'
+    }
+
+    function hideDiv() {
+        document.getElementById('emailDiv').style.display = "none";
+        document.getElementById('addressDiv').style.display = "none";
+        document.getElementById('registerText').onclick = showDiv;
+        document.getElementById('registerText').innerHTML = "Don't have an account?"
+        document.getElementById('title').innerHTML = 'Login'
+        document.getElementById('loginButton').innerHTML = 'Login'
+    }
+</script>
+
+</html>
