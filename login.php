@@ -2,18 +2,22 @@
 <body>
 
 <?php
-$name = $_POST['name'];
-$email = $_POST['email'];
-$address = $_POST['address'];
-$password = $_POST['password'];
+	include('config.php');
+	session_start();
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$password = $_POST['password'];
 
-//session_start();
-if (strlen($address) > 0 && strlen(email) > 0) {
-    //register
-} else {
-	//try to login and session_start()
-}
-//redirect to page
+	if (strlen($address) > 0 && strlen(email) > 0) {
+    	//register
+	} else {
+		//try to login
+		$_SESSION['name'] = $name;
+		$_SESSION['email'] = $email;
+		$_SESSION['address'] = $address;
+	}
+	//redirect to page
 ?>
 
 Welcome <?php echo $name; ?><br>
