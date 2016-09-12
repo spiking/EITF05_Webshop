@@ -3,6 +3,7 @@
 
 <?php
 	include('config.php');
+	include('database.php')
 	session_start();
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -12,20 +13,22 @@
 	if (strlen($address) > 0 && strlen(email) > 0) {
     	//register
 	} else {
+		$db = new Database();
 		//something like this to login
 		//$sql = "SELECT salt FROM users WHERE username = '$name'";
       	//$salt = mysqli_query($db,$sql);
 		//$hashed_password = hash('sha512', $password . $salt);
-		//$sql = "SELECT id FROM users WHERE username = '$name' AND hashed_password = '$hashed_password'";
-		//$results = mysqli_query($db,$sql);
-		//$count = mysqli_num_rows($result);
+		$sql = "SELECT * FROM users WHERE userName = '$name' AND password = '$password'";
+		$results = $db -> executeQuery($sql);
+		$count = count($results);
 
-		//if ($count == 1) {
+		if ($count == 1){
+			print("Logged in!");
 		//	session_register($name)
 		//	$_SESSION['name'] = $name;
 		//	$_SESSION['email'] = $email;
 		//	$_SESSION['address'] = $address;
-		//}
+		}
 	}
 	//redirect to page
 ?>

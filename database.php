@@ -27,7 +27,7 @@ class Database {
 		}
 		return $this->conn;
 	}
-	
+
 	/*Inget prepared statement*/
 		public function executeQuery($query, $param = null) {
 		$result = false;
@@ -40,27 +40,8 @@ class Database {
 		}
 		return $result;
 	}
-	
+
 }
 
-/*Test query*/
-$database = new Database();
-$sql = "SELECT * FROM Users";
-$result = $database->executeQuery($sql)
+
 ?>
-
-<html>
-<head><title>PDO Connection Test</title><head>
-<body>
-<h2>PDO Connection Test</h2>
-
-User Credentials:
-<?php 
-
-	foreach ($result as $row) {
-        print $row['userName'] . "\t";
-        print $row['address'] . "\t";
-    }
-?>
-</body>
-</html>
