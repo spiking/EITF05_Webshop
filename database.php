@@ -26,7 +26,7 @@ class Database {
 		}
 		return $this->conn;
 	}
-	
+
 	/*Inget prepared statement*/
 		public function executeQuery($query) {
 		$result = false;
@@ -39,6 +39,14 @@ class Database {
 		}
 		return $result;
 	}
+<<<<<<< HEAD
 	
 }
 ?>
+=======
+
+}
+
+
+?>
+>>>>>>> 62e9b5337ac95a2c280738ef09fa69f240363881
