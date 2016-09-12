@@ -39,18 +39,18 @@ class Database {
 		}
 		return $result;
 	}
-	
+
 	/*Inget prepared statement*/
 	public function executeUpdate($query) {
 		try {
 			$stmt = $this->getConnection()->query($query);
-  			$rows = $stmt->rowCount();
+  			//$rows = $stmt->rowCount();
   		} catch (PDOException $e) {
 			$error = "*** Internal error: " . $e->getMessage() . "<p>" . $query;
 			die($error);
 		}
-		return $rows;
+		return $stmt;
 	}
-	
+
 }
 ?>

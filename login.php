@@ -9,11 +9,21 @@
 	$email = $_POST['email'];
 	$address = $_POST['address'];
 	$password = $_POST['password'];
+	$db = new Database();
 
-	if (strlen($address) > 0 && strlen(email) > 0) {
-    	//register
+	if (strlen($name) > 0 && strlen($address) > 0) {
+    	$salt = 1;
+		$sql = "INSERT INTO Users VALUES('$name', '$password', '$salt', '$address')";
+		$results = $db -> executeUpdate($sql);
+		if($results == TRUE){
+			print "woop user added";
+		}else{
+			print "Could not register user";
+		}
+
+
 	} else {
-		$db = new Database();
+
 		//something like this to login
 		//$sql = "SELECT salt FROM users WHERE username = '$name'";
       	//$salt = mysqli_query($db,$sql);
