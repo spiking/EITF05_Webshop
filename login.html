@@ -18,26 +18,26 @@
         <h3 id="title">Login</h3>
     </hgroup>
 
-    <form action="index.html">
+    <form action="login.php" method="post">
         <div class="group" id="usernameDiv">
-            <input type="text"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="name"><span class="highlight"></span><span class="bar"></span>
             <label>Name</label>
 
         </div>
         <div class="group" id="emailDiv" style="display:none;">
-            <input type="email"><span class="highlight"></span><span class="bar"></span>
+            <input type="email" name="email"><span class="highlight"></span><span class="bar"></span>
             <label>Email</label>
         </div>
         <div class="group" id="addressDiv" style="display:none;">
-            <input type="text"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="address"><span class="highlight"></span><span class="bar"></span>
             <label>Address</label>
         </div>
 
         <div class="group" id="passwordDiv">
-            <input type="password"><span class="highlight"></span><span class="bar"></span>
+            <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
         </div>
-        <button type="button" class="button buttonBlue" id="loginButton">Login
+        <button type="submit" class="button buttonBlue" id="loginButton">Login
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
         <footer>
