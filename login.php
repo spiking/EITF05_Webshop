@@ -12,11 +12,13 @@
 	$db = new Database();
 
 	if (strlen($name) > 0 && strlen($address) > 0) {
-    	$salt = 1;
-		$sql = "INSERT INTO Users VALUES('$name', '$password', '$salt', '$address')";
+		/*sanitize input*/
+    	$salt = base64_encode(openssl_random_pseudo_bytes(8));
+		$hashed_password = hash('sha512', $password . $salt);
+		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$salt', '$address')";
 		$results = $db -> executeUpdate($sql);
 		if($results == TRUE){
-			print "woop user added";
+			print "User added";
 		}else{
 			print "Could not register user";
 		}
@@ -28,17 +30,28 @@
 		//$sql = "SELECT salt FROM users WHERE username = '$name'";
       	//$salt = mysqli_query($db,$sql);
 		//$hashed_password = hash('sha512', $password . $salt);
-		$sql = "SELECT * FROM users WHERE userName = '$name' AND password = '$password'";
+		$sql = "SELECT * FROM users WHERE userName = '$name'";
 		$results = $db -> executeQuery($sql);
 		$count = count($results);
 
 		if ($count == 1){
-			print("Logged in!");
+			$salt = $results[0]['salt'];
+			$stored_password_hash = $results[0]['password'];
+			$hash = hash('sha512', $password . $salt);
+			if ($hash === $stored_password_hash){
+				print "Logged in!";
+				header('index.html');
+			}else {
+				print "Wrong username and/or password";
+			}
+
 		//	session_register($name)
 		//	$_SESSION['name'] = $name;
 		//	$_SESSION['email'] = $email;
 		//	$_SESSION['address'] = $address;
-		}
+	}else {
+		print "Wrong username and/or password";
+	}
 	}
 	//redirect to page
 ?>
