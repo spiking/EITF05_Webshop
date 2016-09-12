@@ -1,5 +1,3 @@
-<html>
-<body>
 
 <?php
 	include('config.php');
@@ -40,26 +38,19 @@
 			$hash = hash('sha512', $password . $salt);
 			if ($hash === $stored_password_hash){
 				print "Logged in!";
-				header('index.html');
+				$_SESSION['name'] = $name;
+				$_SESSION['email'] = $email;
+				$_SESSION['address'] = $address;
+				header("location: index.html");
 			}else {
 				print "Wrong username and/or password";
 			}
 
 		//	session_register($name)
-		//	$_SESSION['name'] = $name;
-		//	$_SESSION['email'] = $email;
-		//	$_SESSION['address'] = $address;
+
 	}else {
 		print "Wrong username and/or password";
 	}
 	}
 	//redirect to page
 ?>
-<!--Place holder, will be removed-->
-Welcome <?php echo $name; ?><br>
-Your email address is: <?php echo $email;?><br>
-Your address is: <?php echo $address;?><br>
-Your password is: <?php echo $password;?><br>
-
-</body>
-</html>
