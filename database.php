@@ -39,14 +39,6 @@ class Database {
 		}
 		return $result;
 	}
-<<<<<<< HEAD
 	
 }
 ?>
-=======
-
-}
-
-
-?>
->>>>>>> 62e9b5337ac95a2c280738ef09fa69f240363881
