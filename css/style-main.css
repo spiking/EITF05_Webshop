@@ -250,7 +250,7 @@ nav a.button-collapse {
 }
 
 .card-avatar .card-content i {
-   font-size: 1.5rem;
+   font-size: 1.5remav
 }
 
 .card-avatar .card-content .card-title {
@@ -259,6 +259,10 @@ nav a.button-collapse {
 
 .parallax-container {
     max-height: 400px;
+}
+
+#buyBtn {
+    margin-top: 20px;
 }
 
 footer.page-footer {

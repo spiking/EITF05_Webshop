@@ -8,6 +8,7 @@
     <title>MMM - Login</title>
     
     <link rel="stylesheet" href="css/style-login.css">
+    
 </head>
 
 <body>
@@ -20,24 +21,24 @@
 
     <form action="login.php" method="post">
         <div class="group" id="usernameDiv">
-            <input type="text" name="name"><span class="highlight"></span><span class="bar"></span>
-            <label>Name</label>
+            <input type="text" name="name" id="usernameInput"><span class="highlight"></span><span class="bar"></span>
+            <label id="nameLbl">Name</label>
 
         </div>
         <div class="group" id="emailDiv" style="display:none;">
-            <input type="email" name="email"><span class="highlight"></span><span class="bar"></span>
+            <input type="email" name="email" id="emailInput"><span class="highlight"></span><span class="bar"></span>
             <label>Email</label>
         </div>
         <div class="group" id="addressDiv" style="display:none;">
-            <input type="text" name="address"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="address" id="addressInput"><span class="highlight"></span><span class="bar"></span>
             <label>Address</label>
         </div>
 
         <div class="group" id="passwordDiv">
-            <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
+            <input type="password" name="password" id="passwordInput"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
         </div>
-        <button type="submit" class="button buttonBlue" id="loginButton">Login
+        <button type="submit" class="button buttonBlue" id="loginButton" onclick="clearData()">Login
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
         <footer>
@@ -52,23 +53,8 @@
 </body>
 
 <script>
-    function showDiv() {
-        document.getElementById('emailDiv').style.display = "block"
-        document.getElementById('addressDiv').style.display = "block"
-        document.getElementById('registerText').onclick = hideDiv;
-        document.getElementById('registerText').innerHTML = "Already have an account?"
-        document.getElementById('title').innerHTML = 'Sign Up'
-        document.getElementById('loginButton').innerHTML = 'Sign Up'
-    }
 
-    function hideDiv() {
-        document.getElementById('emailDiv').style.display = "none";
-        document.getElementById('addressDiv').style.display = "none";
-        document.getElementById('registerText').onclick = showDiv;
-        document.getElementById('registerText').innerHTML = "Don't have an account?"
-        document.getElementById('title').innerHTML = 'Login'
-        document.getElementById('loginButton').innerHTML = 'Login'
-    }
+    
 </script>
 
 </html>
