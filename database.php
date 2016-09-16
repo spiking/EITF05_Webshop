@@ -55,13 +55,20 @@ class Database {
 	/*Login attempts tracking*/
 	
 	public function confirmIPAddress($ip){
-		$sql = "Select attempts, (CASE WHEN failTime IS NOT NULL THEN 'Denied' ELSE 'Approved' END) as Status FROM loginAttempts WHERE ip = '$ip'";
+		$sql = "Select attempts, UNIX_TIMESTAMP(failTime) as failTime, (CASE WHEN failTime IS NOT NULL THEN 'Denied' ELSE 'Approved' END) as Status FROM loginAttempts WHERE ip = '$ip'";
 		$result = $this->executeQuery($sql);
 		
 		if(count($result) == 0){
+			//Case: IP not in database
 			return 1;
 		}
 		if($result[0]["Status"] == "Denied"){
+			$failTime = $result[0]["failTime"];
+			$currentTime = time();
+			if(($currentTime - $failTime) > 30000*60){
+				clearLoginAttempts($ip);
+				return 1;
+			}
 			return 0;
 		}
 		
@@ -91,7 +98,7 @@ class Database {
 	}
 	
 	public function clearLoginAttempts($ip) {
-		$sql = "UPDATE loginAttempts SET attempts = 0 WHERE ip = '$ip'"; 
+		$sql = "UPDATE loginAttempts SET attempts = 0, failTime = NULL WHERE ip = '$ip'"; 
 		return $this->executeUpdate($sql);
 	}
 	
