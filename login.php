@@ -1,5 +1,13 @@
-
 <?php
+
+	function setUpSession($name, $email, $address) {
+		session_regenerate_id();
+		$_SESSION['name'] = $name;
+		$_SESSION['email'] = $email;
+		$_SESSION['address'] = $address;
+		header("location: index.html");
+	}
+
 	include('database.php');
 	session_start();
 	$name = $_POST['name'];
@@ -7,7 +15,7 @@
 	$address = $_POST['address'];
 	$password = $_POST['password'];
 	$db = new Database();
-	
+
 	if (strlen($name) > 0 && strlen($address) > 0) {
 		/*sanitize input*/
     	$salt = base64_encode(openssl_random_pseudo_bytes(8));
@@ -15,7 +23,8 @@
 		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$salt', '$address')";
 		$results = $db -> executeUpdate($sql);
 		if($results > 0){
-			print "User added";
+			//print "User added";
+			setUpSession($name, $email, $address);
 		}else{
 			print "Could not register user";
 		}
@@ -36,10 +45,7 @@
 				$stored_password_hash = $results[0]['password'];
 				$hash = hash('sha512', $password . $salt);
 				if ($hash === $stored_password_hash){
-					print "Logged in!";
-					$_SESSION['name'] = $name;
-					$_SESSION['email'] = $email;
-					$_SESSION['address'] = $address;
+					setUpSession($name, $email, $address);
 					header("location: index.html");
 				}else {
 					print "Wrong username and/or password";
