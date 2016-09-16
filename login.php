@@ -1,4 +1,13 @@
 <?php
+
+	function setUpSession($name, $email, $address) {
+		session_regenerate_id();
+		$_SESSION['name'] = $name;
+		$_SESSION['email'] = $email;
+		$_SESSION['address'] = $address;
+		header("location: index.html");
+	}
+
 	include('database.php');
 	session_start();
 	$name = $_POST['name'];
@@ -15,8 +24,9 @@
 		$results = $db -> executeUpdate($sql);
 		if($results > 0){
 			//print "User added";
+			setUpSession($name, $email, $address);
 		}else{
-			//print "Could not register user";
+			print "Could not register user";
 		}
 
 
@@ -35,19 +45,16 @@
 				$stored_password_hash = $results[0]['password'];
 				$hash = hash('sha512', $password . $salt);
 				if ($hash === $stored_password_hash){
-					session_regenerate_id();
-					$_SESSION['name'] = $name;
-					$_SESSION['email'] = $email;
-					$_SESSION['address'] = $address;
+					setUpSession($name, $email, $address);
 					header("location: index.html");
 				}else {
-					//print "Wrong username and/or password";
+					print "Wrong username and/or password";
 				}
 
 			//	session_register($name)
 
 		}else {
-			//print "Wrong username and/or password";
+			print "Wrong username and/or password";
 		}
 	}
 	//redirect to page
