@@ -7,7 +7,7 @@
 	$address = $_POST['address'];
 	$password = $_POST['password'];
 	$db = new Database();
-	
+
 	if (strlen($name) > 0 && strlen($address) > 0) {
 		/*sanitize input*/
     	$salt = base64_encode(openssl_random_pseudo_bytes(8));
@@ -37,6 +37,7 @@
 				$hash = hash('sha512', $password . $salt);
 				if ($hash === $stored_password_hash){
 					print "Logged in!";
+					session_regenerate_id();
 					$_SESSION['name'] = $name;
 					$_SESSION['email'] = $email;
 					$_SESSION['address'] = $address;
