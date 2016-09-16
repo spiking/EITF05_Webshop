@@ -1,4 +1,3 @@
-
 <?php
 	include('database.php');
 	session_start();
@@ -15,9 +14,9 @@
 		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$salt', '$address')";
 		$results = $db -> executeUpdate($sql);
 		if($results > 0){
-			print "User added";
+			//print "User added";
 		}else{
-			print "Could not register user";
+			//print "Could not register user";
 		}
 
 
@@ -36,20 +35,19 @@
 				$stored_password_hash = $results[0]['password'];
 				$hash = hash('sha512', $password . $salt);
 				if ($hash === $stored_password_hash){
-					print "Logged in!";
 					session_regenerate_id();
 					$_SESSION['name'] = $name;
 					$_SESSION['email'] = $email;
 					$_SESSION['address'] = $address;
 					header("location: index.html");
 				}else {
-					print "Wrong username and/or password";
+					//print "Wrong username and/or password";
 				}
 
 			//	session_register($name)
 
 		}else {
-			print "Wrong username and/or password";
+			//print "Wrong username and/or password";
 		}
 	}
 	//redirect to page
