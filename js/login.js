@@ -55,9 +55,14 @@ function hideDiv() {
 }
 
 function clearData() {
-    $("#usernameInput").val('');
-    $("#emailInput").val('');
-    $("#addressInput").val('');
-    $("#passwordInput").val('');
-    console.log("I've been called");
+    
+    if(document.getElementById) {
+        document.form.reset();
+    }
+    
+//    $("#usernameInput").val('');
+//    $("#emailInput").val('');
+//    $("#addressInput").val('');
+//    $("#passwordInput").val('');
+//    console.log("I've been called");
 }
