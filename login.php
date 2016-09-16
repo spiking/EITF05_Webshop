@@ -16,26 +16,22 @@
 	$password = $_POST['password'];
 	$db = new Database();
 
-	if (strlen($name) > 0 && strlen($address) > 0) {
+	if (strlen($name) > 0 && strlen($address) > 0 && strlen($email) > 0 && strlen($password) > 0) {
 		/*sanitize input*/
     	$salt = base64_encode(openssl_random_pseudo_bytes(8));
 		$hashed_password = hash('sha512', $password . $salt);
 		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$salt', '$address')";
 		$results = $db -> executeUpdate($sql);
+
 		if($results > 0){
-			//print "User added";
 			setUpSession($name, $email, $address);
-		}else{
+		} else {
 			print "Could not register user";
 		}
-
-
-	} else {
-
-			//something like this to login
-			//$sql = "SELECT salt FROM users WHERE username = '$name'";
-			//$salt = mysqli_query($db,$sql);
-			//$hashed_password = hash('sha512', $password . $salt);
+	} else if (strlen($name) > 0 && strlen($password) > 0) {
+		if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
+			print "NOT ALLOWED TO LOGIN";
+		} else {
 			$sql = "SELECT * FROM users WHERE userName = '$name'";
 			$results = $db -> executeQuery($sql);
 			$count = count($results);
@@ -44,17 +40,20 @@
 				$salt = $results[0]['salt'];
 				$stored_password_hash = $results[0]['password'];
 				$hash = hash('sha512', $password . $salt);
+
 				if ($hash === $stored_password_hash){
 					setUpSession($name, $email, $address);
 					header("location: index.html");
-				}else {
+				} else {
+					//log ip and increment number of failed attempts
+					$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
 					print "Wrong username and/or password";
 				}
-
-			//	session_register($name)
-
-		}else {
-			print "Wrong username and/or password";
+			} else {
+				//log ip and increment number of failed attempts
+				$db->logAttempt($_SERVER['REMOTE_ADDR']);
+				print "Wrong username and/or password";
+			}
 		}
 	}
 	//redirect to page
