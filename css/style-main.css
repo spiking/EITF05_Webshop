@@ -57,15 +57,6 @@
 
 .card-content a:hover {color: #2196F3;}
 
-#products {
-    background-color: rgb(247, 247, 247);
-}
-
-#team {
-    background-color: rgb(247, 247, 247);
-}
- 
-
 .text_pink{color:#EF9A9A;}
 
 nav ul a {
@@ -261,10 +252,20 @@ nav a.button-collapse {
     max-height: 400px;
 }
 
+footer.page-footer {
+    margin-top: 0px !important;
+}
+
+
 #buyBtn {
     margin-top: 20px;
 }
 
-footer.page-footer {
-    margin-top: 0px !important;
+
+#products {
+    background-color: rgb(247, 247, 247);
+}
+
+#team {
+    background-color: rgb(247, 247, 247);
 }
