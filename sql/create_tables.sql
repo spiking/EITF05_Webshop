@@ -12,6 +12,14 @@ CREATE TABLE Users(
     PRIMARY KEY (userName)
 );
 
+CREATE TABLE LoginAttempts(
+	IP varchar(20),
+    attempts int(10) NOT NULL,
+    lastLogin DATETIME NOT NULL,
+    PRIMARY KEY (IP)
+);
+
 /**Test user*/
 
-INSERT INTO Users VALUES('SvenTheKingXXX', 'pw', '1111111111111111', 'gangsterstreet 69');
+/*INSERT INTO Users VALUES('SvenTheKingXXX', 'pw', '1111111111111111', 'gangsterstreet 69');
+*/

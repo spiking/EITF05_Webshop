@@ -6,7 +6,7 @@ class Database {
 	private $_password;
 	private $_database;
 	private $conn;
-
+	
 	public function __construct() {
 		require('connect_database.php');
 		$this->_host = $_host;
@@ -51,6 +51,51 @@ class Database {
 		}
 		return $rows;
 	}
+	
+	/*Login attempts tracking*/
+	
+	public function confirmIPAddress($ip){
+		$sql = "Select attempts, (CASE WHEN failTime IS NOT NULL THEN 'Denied' ELSE 'Approved' END) as Status FROM loginAttempts WHERE ip = '$ip'";
+		$result = $this->executeQuery($sql);
+		
+		if(count($result) == 0){
+			return 1;
+		}
+		if($result[0]["Status"] == "Denied"){
+			return 0;
+		}
+		
+		return 1;
+	}
+	
+	public function addLoginAttempt($ip){
+		
+		$sql = "SELECT * FROM loginAttempts WHERE IP ='$ip'";
+		$result = $this->executeQuery($sql);
+		
+		if($result){
+			$attempts = $result[0]["attempts"] + 1;
+			
+			if($attempts == 5){
+				$sql = "UPDATE loginAttempts SET attempts ='$attempts', failTime = NOW() WHERE IP = '$ip'";
+				$this->executeUpdate($sql);
+			}
+			else{
+				$sql = "UPDATE loginAttempts SET attempts = '$attempts' WHERE IP = '$ip'";
+				$this->executeUpdate($sql);
+			}
+		}else{
+			$sql = "INSERT INTO loginAttempts VALUES ('$ip', 1, NULL)";
+			$this->executeUpdate($sql);
+		}
+	}
+	
+	public function clearLoginAttempts($ip) {
+		$sql = "UPDATE loginAttempts SET attempts = 0 WHERE ip = '$ip'"; 
+		return $this->executeUpdate($sql);
+	}
+	
+	
 
 }
 ?>
