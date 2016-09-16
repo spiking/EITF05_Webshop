@@ -30,7 +30,7 @@
 		}
 	} else if (strlen($name) > 0 && strlen($password) > 0) {
 		if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
-			print "NOT ALLOWED TO LOGIN";
+			print "Try again in 30 minutes from your last try";
 		} else {
 			$sql = "SELECT * FROM users WHERE userName = '$name'";
 			$results = $db -> executeQuery($sql);
