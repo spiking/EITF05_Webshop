@@ -27,11 +27,11 @@ class Database {
 		return $this->conn;
 	}
 
-	/*Inget prepared statement*/
-		public function executeQuery($query) {
+	public function executeQuery($query, $param = null) {
 		$result = false;
 		try {
-			$stmt = $this->getConnection()->query($query);
+			$stmt = $this->getConnection()->prepare($query);
+			$stmt->execute($param);
 			$result = $stmt->fetchAll();
 		} catch (PDOException $e) {
 			$error = "*** Internal error: " . $e->getMessage() . "\n query: " . $query;
@@ -39,17 +39,17 @@ class Database {
 		}
 		return $result;
 	}
-
-	/*Inget prepared statement*/
-	public function executeUpdate($query) {
+    
+    public function executeUpdate($query, $param = null) {
 		try {
-			$stmt = $this->getConnection()->query($query);
-  			//$rows = $stmt->rowCount();
+			$stmt = $this->getConnection()->prepare($query);
+  			$stmt->execute($param);
+  			$rows = $stmt->rowCount();
   		} catch (PDOException $e) {
 			$error = "*** Internal error: " . $e->getMessage() . "<p>" . $query;
 			die($error);
 		}
-		return $stmt;
+		return $rows;
 	}
 
 }
