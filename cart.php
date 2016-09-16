@@ -6,6 +6,8 @@ session_start();
 //$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'quantity' => 0);
 //$_SESSION['cart']['GoogleX'] = array('product' => 'GoogleX', 'quantity' => 0);
 
+//print_r($_SESSION['cart']);
+
 //$_SESSION['cart'] = array();
 
 ?>
@@ -81,15 +83,19 @@ session_start();
                     $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
                     $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
                     
-                        print '<table>';
-                            print '<thead>';
-                                print '<tr>';
-                                    print '<th data-field="img">Product</th>';
-                                    print '<th data-field="name">Name</th>';
-                                    print '<th data-field="price">Price</th>';
-                                    print '<th data-field="amount">Amount</th>';
-                                print '</tr>';
-                            print '</thead>';
+                    $iFone7Price = $_SESSION['cart']['iFone7']['price'];
+                    $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+                    $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+                    
+                    print '<table>';
+                        print '<thead>';
+                            print '<tr>';
+                                print '<th data-field="img">Product</th>';
+                                print '<th data-field="name">Name</th>';
+                                print '<th data-field="price">Price</th>';
+                                print '<th data-field="amount">Amount</th>';
+                            print '</tr>';
+                        print '</thead>';
             
                         print '<tbody>';                      
                             print '<tr>';
@@ -98,8 +104,15 @@ session_start();
                                     print '<td><img src="img/product_1.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
                                     print '<td>' . $iFone7Name . '</td>';
-                                    print '<td>7 490 kr</td>';
-                                    print '<td>' . $iFone7Count . '</td>';
+                                    print '<td>' . $iFone7Price . ' SEK</td>';
+                                    print '<td>';
+                                        print '<select class="browser-default">';
+                                        print '<option value="" disabled selected>' . $iFone7Count . '</option>';  
+                                        for ($x = 0; $x <= 10; $x++) {
+                                                print '<option value="1">' . $x . '</option>'; 
+                                        } 
+                                        print '</select>';
+                                    print '</td>';
                                 print '</tr>';
                             }
                     
@@ -108,8 +121,15 @@ session_start();
                                     print ' <td><img src="img/product_2.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
                                     print '<td>' . $zamZung7Name . '</td>';
-                                    print '<td>6 490 kr</td>';
-                                    print '<td>' . $zamZung7Count . '</td>';
+                                    print '<td>' . $zamZung7Price . ' SEK</td>';
+                                    print '<td>';
+                                        print '<select class="browser-default">';
+                                        print '<option value="" disabled selected>' . $zamZung7Count . '</option>';  
+                                        for ($x = 0; $x <= 10; $x++) {
+                                                print '<option value="1">' . $x . '</option>'; 
+                                        } 
+                                        print '</select>';
+                                    print '</td>';
                                 print '</tr>';
                             }
                     
@@ -118,109 +138,62 @@ session_start();
                                     print '<td><img src="img/product_3.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
                                     print '<td>' . $googleXName . '</td>';
-                                    print '<td>4 990 kr</td>';
-                                    print '<td>' . $googleXCount . '</td>';
+                                    print '<td>' . $googleXPrice. ' SEK</td>';
+                                    print '<td>';
+                                        print '<select class="browser-default">';
+                                        print '<option value="" disabled selected>' . $googleXCount . '</option>';  
+                                        for ($x = 0; $x <= 10; $x++) {
+                                                print '<option value="1">' . $x . '</option>'; 
+                                        } 
+                                        print '</select>';
+                                    print '</td>';
                                 print '</tr>';
                             }
-
                             print '</tr>';
                         print '</tbody>';
-                        
-                        print '</table>';
-                    
+                    print '</table>';
             ?>
-
                         
-
-<!--
-
-                        
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th data-field="img">Product</th>
-                                    <th data-field="name">Name</th>
-                                    <th data-field="price">Price</th>
-                                    <th data-field="amount">Amount</th>
-                                </tr>
-                            </thead>
+            <table>
+                <h4 class="header text_b"></h4>
+                    <thead>
+                        <tr>                                    
+                            <th data-field="price">Total</th>
+                        </tr>
+                        </thead>
                             <tbody>
                                 <tr>
-                                    <td><img src="img/product_1.jpg" alt="" border=3 height=100 width=100></img>
-                                    </td>
-                                    <td>iFone 7</td>
-                                    <td>7 490 kr</td>
-                                    <td>
-                                        <select class="browser-default">
-                                            <option value="" disabled selected>1</option>
-                                            <option value="1">0</option>
-                                            <option value="2">1</option>
-                                            <option value="3">2</option>
-                                            <option value="4">3</option>
-                                            <option value="5">4</option>
-                                            <option value="6">5</option>
-                                        </select>
-
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/product_2.jpg" alt="" border=3 height=100 width=100></img>
-                                    </td>
-                                    <td>ZamZung 7</td>
-                                    <td>6 990 kr</td>
-                                    <td>
-                                        <select class="browser-default">
-                                            <option value="" disabled selected>1</option>
-                                            <option value="1">0</option>
-                                            <option value="2">1</option>
-                                            <option value="3">2</option>
-                                            <option value="4">3</option>
-                                            <option value="5">4</option>
-                                            <option value="6">5</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/product_3.jpg" alt="" border=3 height=100 width=100></img>
-                                    </td>
-                                    <td>Google EXUS</td>
-                                    <td align="right">4 990 kr</td>
-                                    <td>
-                                        <select class="browser-default">
-                                            <option value="" disabled selected>1</option>
-                                            <option value="1">0</option>
-                                            <option value="2">1</option>
-                                            <option value="3">2</option>
-                                            <option value="4">3</option>
-                                            <option value="5">4</option>
-                                            <option value="6">5</option>
-                                        </select>
-                                    </td>
+                                    <?php 
+                                        $iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
+                                        $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
+                                        $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
+                    
+                                        $iFone7Price = $_SESSION['cart']['iFone7']['price'];
+                                        $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+                                        $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+                                    
+                                        $total = 0;
+                                    
+                                        if ($iFone7Count > 0) {
+                                            $total += $iFone7Count * $iFone7Price;
+                                        } 
+                                        
+                                        if ($zamZung7Count > 0) {
+                                            $total += $zamZung7Count * $zamZung7Price;
+                                        } 
+                                    
+                                        if ($googleXCount > 0) {
+                                            $total += $googleXCount * $googleXPrice;
+                                        }
+                                
+                                        print '<td>' . $total . ' SEK</td>';
+                                            
+                                    ?>
                                 </tr>
                             </tbody>
--->
-                        
-
-                        <table>
-
-
-
-                        <h4 class="header text_b"></h4>
-                        <thead>
-                            <tr>
-                                <th data-field="price">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>19 970 kr</td>
-                            </tr>
-                            </tr>
-                        </tbody>
-                        </table>
-
+                    </table>
                 </div>
+                <a href="#" class="waves-effect waves-light btn-large red" style="margin-top:20px;">Empty Cart</a>
             </div>
         </div>
 
@@ -260,7 +233,7 @@ session_start();
                     </div>
                 </form>
 
-                <a href="payment-completed.html" class="waves-effect waves-light btn-large orange" id="confirmButton">Confirm Payment</a>
+                <a href="payment-completed.html" class="waves-effect waves-light btn-large green" id="confirmButton">Confirm Payment</a>
 
             </div>
 

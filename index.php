@@ -1,12 +1,13 @@
 <?php
 
 session_start(); 
-
-//$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'quantity' => 0);
-//$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'quantity' => 0);
-//$_SESSION['cart']['GoogleX'] = array('product' => 'GoogleX', 'quantity' => 0);
+//
+//$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'price' => 7495, 'quantity' => 0);
+//$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'price' => 6990, 'quantity' => 0);
+//$_SESSION['cart']['GoogleX'] = array('product' => 'GoogleX', 'price' => 4990, 'quantity' => 0);
 
 //$_SESSION['cart'] = array();
+//print_r($_SESSION['cart']);
 
 ?>
     <!DOCTYPE html>
@@ -51,8 +52,9 @@ session_start();
                             <li><a href="cart.php">Cart</a></li>
 
                             <?php 
-                            print '<li><a href="login.html">' . $_SESSION['name'] . '</a></li>';
-                        ?>
+                            print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+                            print '<li><a href="login.html">Log Out</a></li>';
+                            ?>
 
                         </ul>
                         <ul id="nav-mobile" class="side-nav">
@@ -127,7 +129,7 @@ session_start();
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
-                        | 7 450 kr
+                        | 7 490 kr
                         </span>
                                 <p><a class="waves-effect waves-light btn" name="insert" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000); productAjax('iFone7')">BUY IT NOW</a></p>
                             </div>
@@ -180,9 +182,9 @@ session_start();
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
-                        | 7 450 kr
+                        | 7 490 kr
                         </span>
-                                <p><a class="waves-effect waves-light btn" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000)">BUY IT NOW</a></p>
+                                <p><a class="waves-effect waves-light btn" name="insert" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000); productAjax('iFone7')">BUY IT NOW</a></p>
                             </div>
 
                             <div class="card-reveal">
@@ -200,7 +202,7 @@ session_start();
                                 <span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
                         | 6 990 kr
                         </span>
-                                <p><a class="waves-effect waves-light btn" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000)">BUY IT NOW</a></p>
+                                <p><a class="waves-effect waves-light btn" name="product" value="iFone7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000); productAjax('ZamZung7')" )>BUY IT NOW</a></p>
                             </div>
 
                             <div class="card-reveal">
@@ -218,7 +220,7 @@ session_start();
                                 <span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
                         | 4 990 kr
                         </span>
-                                <p><a class="waves-effect waves-light btn" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000)">BUY IT NOW</a></p>
+                                <p><a class="waves-effect waves-light btn" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000); productAjax('GoogleX')">BUY IT NOW</a></p>
                             </div>
 
                             <div class="card-reveal">
