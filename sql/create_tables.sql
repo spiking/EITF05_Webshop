@@ -13,9 +13,9 @@ CREATE TABLE Users(
 );
 
 CREATE TABLE LoginAttempts(
-	IP varchar(20),
+	IP varchar(45),
     attempts int(10) NOT NULL,
-    lastLogin DATETIME NOT NULL,
+    failTime DATETIME DEFAULT NULL,
     PRIMARY KEY (IP)
 );
 
