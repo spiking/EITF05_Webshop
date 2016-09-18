@@ -8,72 +8,82 @@ session_start();
 
 //print_r($_SESSION['cart']);
 
-//$_SESSION['cart'] = array();
+/*$_SESSION['cart'] = array(); */
 
 ?>
 
-    <!DOCTYPE html>
-    <html>
+	<!DOCTYPE html>
+	<html>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-        <meta name="theme-color" content="#2196F3">
-        <title>MMM - Mobile</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+		<meta name="theme-color" content="#2196F3">
+		<title>MMM - Mobile</title>
 
-        <!-- CSS  -->
-        <link href="css/style-main.css" type="text/css" rel="stylesheet">
-        <link href="css/style-cart.css" type="text/css" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-        <!--Import Google Icon Font-->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- CSS  -->
+		<link href="css/style-main.css" type="text/css" rel="stylesheet">
+		<link href="css/style-cart.css" type="text/css" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    </head>
+	</head>
 
-    <body>
+	<body>
 
-        <div id="loader-wrapper">
-            <div id="loader"></div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-        </div>
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
+		</div>
 
-        <!--Navigation-->
-        <div class="navbar-fixed">
-            <nav id="nav_f" class="default_color" role="navigation">
-                <div class="container">
-                    <div class="nav-wrapper">
-                        <a href="#" id="logo-container" class="brand-logo">MMM</a>
-                        <ul class="right hide-on-med-and-down">
-                            <li><a href="index.php">Home</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="cart.php">Cart</a></li>
-                            <li><a href="login.html">Login</a></li>
-                        </ul>
-                        <ul id="nav-mobile" class="side-nav">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="">Cart</a></li>
-                            <li><a href="login.html">Login</a></li>
-                        </ul>
-                        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-                    </div>
-                </div>
-            </nav>
-        </div>
+		<!--Navigation-->
+		<div class="navbar-fixed">
+			<nav id="nav_f" class="default_color" role="navigation">
+				<div class="container">
+					<div class="nav-wrapper">
+						<a href="#" id="logo-container" class="brand-logo">MMM</a>
+						<ul class="right hide-on-med-and-down">
+							<li><a href="index.php">Home</a></li>
+							<li><a href="#">Products</a></li>
+							<li><a href="#">Team</a></li>
+							<li><a href="cart.php">Cart</a></li>
+							<?php 
+							
+							if (isset($_SESSION['name'])) {
+								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							} else {
+								print '<li><a href="login.html">Login</a></li>';
+							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							}
+	
+                            ?>
+						</ul>
+						<ul id="nav-mobile" class="side-nav">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Products</a></li>
+							<li><a href="#">Team</a></li>
+							<li><a href="">Cart</a></li>
+							<li><a href="login.html">Login</a></li>
+						</ul>
+						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+					</div>
+				</div>
+			</nav>
+		</div>
 
-        <header>
-        </header>
+		<header>
+		</header>
 
-        <div>
-            <div class="container">
-                <div class="wrapper">
-                    <h4 class="header text_b" id="cartTitle">Cart</h4>
+		<div>
+			<div class="container">
+				<div class="wrapper">
+					<h4 class="header text_b" id="cartTitle">Cart</h4>
 
-                    <?php 
+					<?php 
                     
                     $iFone7Name = $_SESSION['cart']['iFone7']['product'];
                     $zamZung7Name = $_SESSION['cart']['ZamZung7']['product'];
@@ -87,16 +97,20 @@ session_start();
                     $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
                     $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
                     
-                    print '<table>';
-                        print '<thead>';
-                            print '<tr>';
-                                print '<th data-field="img">Product</th>';
+                    
+					if (!empty($_SESSION['cart'])) {
+						print '<table>';
+						    print '<thead>';
+                            	print '<tr>';
+						        print '<th data-field="img">Product</th>';
                                 print '<th data-field="name">Name</th>';
                                 print '<th data-field="price">Price</th>';
                                 print '<th data-field="amount">Amount</th>';
                             print '</tr>';
-                        print '</thead>';
-            
+						 print '</thead>';
+					} else {
+						print '<h5 id="cartEmpty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';					
+					}
                         print '<tbody>';                      
                             print '<tr>';
                             if ($iFone7Count > 0) {
@@ -149,21 +163,22 @@ session_start();
                                     print '</td>';
                                 print '</tr>';
                             }
+
                             print '</tr>';
                         print '</tbody>';
                     print '</table>';
             ?>
-                        
-            <table>
-                <h4 class="header text_b"></h4>
-                    <thead>
-                        <tr>                                    
-                            <th data-field="price">Total</th>
-                        </tr>
-                        </thead>
-                            <tbody>
-                                <tr>
-                                    <?php 
+
+						<table>
+							<h4 class="header text_b"></h4>
+							<thead>
+								<tr>
+									<th data-field="price">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<?php 
                                         $iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
                                         $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
                                         $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
@@ -189,74 +204,93 @@ session_start();
                                         print '<td>' . $total . ' SEK</td>';
                                             
                                     ?>
-                                </tr>
-                            </tbody>
-                    </table>
-                </div>
-                <a href="#" class="waves-effect waves-light btn-large red" style="margin-top:20px;">Empty Cart</a>
-            </div>
-        </div>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+				<a href="#" class="waves-effect waves-light btn-large red" style="margin-top:20px;" onclick="emptyCart()">Empty Cart</a>
+			</div>
+		</div>
 
-        <div class="container">
-            <div class="row">
-                <form class="col s12">
-                    <h4 class="header text_b">Information</h4>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email" data-error="Incorrect" data-success="right">Email</label>
-                        </div>
-                    </div>
+		<div class="container">
+			<div class="row">
+				<form class="col s12">
+					<h4 class="header text_b">Information</h4>
+					<div class="row">
+						<div class="input-field col s6">
+							<input id="first_name" type="text" class="validate">
+							<label for="first_name">First Name</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="last_name" type="text" class="validate">
+							<label for="last_name">Last Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="email" type="email" class="validate">
+							<label for="email" data-error="Incorrect" data-success="right">Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="address" type="text" class="validate">
+							<label for="address">Address</label>
+						</div>
+					</div>
+					<select class="browser-default">
+						<option value="" disabled selected>Payment Option</option>
+						<option value="1">Credit Card</option>
+						<option value="2">Credit Card</option>
+						<option value="3">Credit Card</option>
+					</select>
 
-                    <select class="browser-default">
-                        <option value="" disabled selected>Payment Option</option>
-                        <option value="1">Credit Card</option>
-                        <option value="2">Credit Card</option>
-                        <option value="3">Credit Card</option>
-                    </select>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="creditcard" type="text" class="validate">
+							<label for="creditcard">Credit Card Number</label>
+						</div>
+					</div>
+				</form>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="creditcard" type="text" class="validate">
-                            <label for="creditcard">Credit Card Number</label>
-                        </div>
-                    </div>
-                </form>
+				<a href="payment-completed.php" class="waves-effect waves-light btn-large green" id="confirmButton">Confirm Payment</a>
 
-                <a href="payment-completed.html" class="waves-effect waves-light btn-large green" id="confirmButton">Confirm Payment</a>
+			</div>
+		</div>
 
-            </div>
+		<!--Footer-->
+		<footer id="contact" class="page-footer default_color scrollspy">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<!--                    Contact infor or w.e -->
+					</div>
+				</div>
+			</div>
+		</footer>
 
-        </div>
 
-        <!--Footer-->
-        <footer id="contact" class="page-footer default_color scrollspy">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <!--                    Contact infor or w.e -->
-                    </div>
-                </div>
-            </div>
-        </footer>
+		<script>
+			function emptyCart() {
+				$.ajax({
+					url: "emptyCart.php", //the page containing php script
+					type: "POST", //request type
+					success: function (result) {
+						/*alert(result);*/
+					}
+				});
 
-        <!--jQuery-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+				location.reload();
+			}
+		</script>
 
-        <!--   Script Files -->
-        <script src="js/materialize-min.js"></script>
-        <script src="js/main-min.js"></script>
+		<!--jQuery-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    </body>
+		<!--   Script Files -->
+		<script src="js/materialize-min.js"></script>
+		<script src="js/main-min.js"></script>
 
-    </html>
+	</body>
+
+	</html>
