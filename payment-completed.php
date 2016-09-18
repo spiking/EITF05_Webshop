@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,18 +26,18 @@
 
 <body>
 
-
-    <div class="navbar-fixed">
-        <nav id="nav_f" class="default_color" role="navigation">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#" id="logo-container" class="brand-logo">MMM</a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="cart.php">Cart</a></li>
-                        <?php 
+		<!--Navigation-->
+		<div class="navbar-fixed">
+			<nav id="nav_f" class="default_color" role="navigation">
+				<div class="container">
+					<div class="nav-wrapper">
+						<a href="#" id="logo-container" class="brand-logo">MMM</a>
+						<ul class="right hide-on-med-and-down">
+							<li><a href="index.php">Home</a></li>
+							<li><a href="#">Products</a></li>
+							<li><a href="#">Team</a></li>
+							<li><a href="cart.php">Cart</a></li>
+							<?php 
 							
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
@@ -40,20 +47,30 @@
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
 	
-                        ?>
-                    </ul>
-                    <ul id="nav-mobile" class="side-nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="">Cart</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-                </div>
-            </div>
-        </nav>
-    </div>
+                            ?>
+						</ul>
+						<ul id="nav-mobile" class="side-nav">
+							<li><a href="index.php">Home</a></li>
+							<li><a href="#">Products</a></li>
+							<li><a href="#">Team</a></li>
+							<li><a href="cart.php">Cart</a></li>
+							<?php 
+							
+							if (isset($_SESSION['name'])) {
+								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							} else {
+								print '<li><a href="login.html">Login</a></li>';
+							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							}
+	
+                            ?>
+						</ul>
+						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+					</div>
+				</div>
+			</nav>
+		</div>
 
     <!--Banner-->
     <div class="section no-pad-bot" id="index-banner">

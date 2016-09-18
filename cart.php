@@ -63,11 +63,21 @@ session_start();
                             ?>
 						</ul>
 						<ul id="nav-mobile" class="side-nav">
-							<li><a href="#">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
-							<li><a href="">Cart</a></li>
-							<li><a href="login.html">Login</a></li>
+							<li><a href="cart.php">Cart</a></li>
+							<?php 
+							
+							if (isset($_SESSION['name'])) {
+								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							} else {
+								print '<li><a href="login.html">Login</a></li>';
+							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							}
+	
+                            ?>
 						</ul>
 						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 					</div>

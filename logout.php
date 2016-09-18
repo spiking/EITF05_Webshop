@@ -30,9 +30,6 @@ session_destroy();
         <button type="submit" class="button buttonBlue" id="loginButton">Back To Login
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
-        <footer>
-            <font size="2px"><center><a href="index.html" style="color:#333333; text-decoration:none;" id="registerText">Some cool question?</a></center></font>
-        </footer>
     </form>
     
     <!--jQuery-->
