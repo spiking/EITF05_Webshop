@@ -118,7 +118,7 @@ session_start();
                 </div>
 -->
 
-                <center> <a href="index.html" class="waves-effect waves-light btn-large orange" id="confirmButton">FREE MONEY CLICK HERE!</a></center>
+                <center> <a href="#" class="waves-effect waves-light btn-large orange" id="confirmButton">FREE MONEY CLICK HERE!</a></center>
 
             </div>
         </div>
@@ -126,12 +126,8 @@ session_start();
 
 
     <div class="parallax-container valign-wrapper">
-        <div class="parallax"><img src="img/flat_parallax.png" alt="Unsplashed background img 3"></div>
+        <div class="parallax"><img src="../img/flat_parallax.png" alt="Unsplashed background img 3"></div>
     </div>
-
-
-
-
 
     <!--
     Parallax

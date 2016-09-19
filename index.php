@@ -2,9 +2,10 @@
 
 session_start(); 
 
-//if (!isset($_SESSION['name'])) {
-	// User not authenticated, force out of system
-//}
+if (!isset($_SESSION['name'])) {
+    session_destroy();
+    header("location: login.html");
+}
 
 //$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'price' => 7495, 'quantity' => 0);
 //$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'price' => 6990, 'quantity' => 0);

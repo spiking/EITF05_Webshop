@@ -2,6 +2,11 @@
 
 session_start();
 
+if (!isset($_SESSION['name'])) {
+    session_destroy();
+    header("location: login.html");
+}
+
 //$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'quantity' => 0);
 //$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'quantity' => 0);
 //$_SESSION['cart']['GoogleX'] = array('product' => 'GoogleX', 'quantity' => 0);
@@ -132,7 +137,7 @@ session_start();
                             print '<tr>';
                             if (isset($iFone7Count) && $iFone7Count > 0) {
                                 print '<tr>';
-                                    print '<td><img src="img/product_1.jpg" alt="" border=3 height=100 width=100></img>
+                                    print '<td><img src="../img/product_1.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
                                     print '<td>' . $iFone7Name . '</td>';
                                     print '<td>' . $iFone7Price . ' SEK</td>';
@@ -149,7 +154,7 @@ session_start();
 
                             if (isset($zamZung7Count) && $zamZung7Count > 0) {
                                 print '<tr>';
-                                    print ' <td><img src="img/product_2.jpg" alt="" border=3 height=100 width=100></img>
+                                    print ' <td><img src="../img/product_2.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
                                     print '<td>' . $zamZung7Name . '</td>';
                                     print '<td>' . $zamZung7Price . ' SEK</td>';
@@ -166,7 +171,7 @@ session_start();
 
                             if (isset($googleXCount) && $googleXCount > 0) {
                                 print '<tr>';
-                                    print '<td><img src="img/product_3.jpg" alt="" border=3 height=100 width=100></img>
+                                    print '<td><img src="../img/product_3.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
                                     print '<td>' . $googleXName . '</td>';
                                     print '<td>' . $googleXPrice. ' SEK</td>';
