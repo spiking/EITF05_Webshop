@@ -1,6 +1,6 @@
 <?php
 
-session_start(); 
+session_start();
 
 //$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'quantity' => 0);
 //$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'quantity' => 0);
@@ -50,8 +50,8 @@ session_start();
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
 							<li><a href="cart.php">Cart</a></li>
-							<?php 
-							
+							<?php
+
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
@@ -59,7 +59,7 @@ session_start();
 								print '<li><a href="../login.html">Login</a></li>';
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
-	
+
                             ?>
 						</ul>
 						<ul id="nav-mobile" class="side-nav">
@@ -67,8 +67,8 @@ session_start();
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
 							<li><a href="cart.php">Cart</a></li>
-							<?php 
-							
+							<?php
+
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
@@ -76,7 +76,7 @@ session_start();
 								print '<li><a href="../login.html">Login</a></li>';
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
-	
+
                             ?>
 						</ul>
 						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -93,21 +93,28 @@ session_start();
 				<div class="wrapper">
 					<h4 class="header text_b" id="cartTitle">Cart</h4>
 
-					<?php 
-                    
-                    $iFone7Name = $_SESSION['cart']['iFone7']['product'];
-                    $zamZung7Name = $_SESSION['cart']['ZamZung7']['product'];
-                    $googleXName = $_SESSION['cart']['GoogleX']['product'];
-                    
-                    $iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
-                    $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
-                    $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
-                    
-                    $iFone7Price = $_SESSION['cart']['iFone7']['price'];
-                    $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
-                    $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
-                    
-                    
+					<?php
+                    if(isset($_SESSION['cart']['iFone7'])){
+							$iFone7Name = $_SESSION['cart']['iFone7']['product'];
+							$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
+							$iFone7Price = $_SESSION['cart']['iFone7']['price'];
+						  }
+
+						  if(isset($_SESSION['cart']['ZamZung7'])){
+							 $zamZung7Name = $_SESSION['cart']['ZamZung7']['product'];
+							 $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
+							 $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+						  }
+
+						  if(isset($_SESSION['cart']['GoogleX']['product'])){
+							 $googleXName = $_SESSION['cart']['GoogleX']['product'];
+							 $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
+							 $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+						  }
+
+
+
+
 					if (!empty($_SESSION['cart'])) {
 						print '<table>';
 						    print '<thead>';
@@ -119,11 +126,11 @@ session_start();
                             print '</tr>';
 						 print '</thead>';
 					} else {
-						print '<h5 id="cartEmpty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';					
+						print '<h5 id="cartEmpty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
 					}
-                        print '<tbody>';                      
+                        print '<tbody>';
                             print '<tr>';
-                            if ($iFone7Count > 0) {
+                            if (isset($iFone7Count) && $iFone7Count > 0) {
                                 print '<tr>';
                                     print '<td><img src="img/product_1.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
@@ -131,16 +138,16 @@ session_start();
                                     print '<td>' . $iFone7Price . ' SEK</td>';
                                     print '<td>';
                                         print '<select class="browser-default">';
-                                        print '<option value="" disabled selected>' . $iFone7Count . '</option>';  
+                                        print '<option value="" disabled selected>' . $iFone7Count . '</option>';
                                         for ($x = 0; $x <= 10; $x++) {
-                                                print '<option value="1">' . $x . '</option>'; 
-                                        } 
+                                                print '<option value="1">' . $x . '</option>';
+                                        }
                                         print '</select>';
                                     print '</td>';
                                 print '</tr>';
                             }
-                    
-                            if ($zamZung7Count > 0) {
+
+                            if (isset($zamZung7Count) && $zamZung7Count > 0) {
                                 print '<tr>';
                                     print ' <td><img src="img/product_2.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
@@ -148,16 +155,16 @@ session_start();
                                     print '<td>' . $zamZung7Price . ' SEK</td>';
                                     print '<td>';
                                         print '<select class="browser-default">';
-                                        print '<option value="" disabled selected>' . $zamZung7Count . '</option>';  
+                                        print '<option value="" disabled selected>' . $zamZung7Count . '</option>';
                                         for ($x = 0; $x <= 10; $x++) {
-                                                print '<option value="1">' . $x . '</option>'; 
-                                        } 
+                                                print '<option value="1">' . $x . '</option>';
+                                        }
                                         print '</select>';
                                     print '</td>';
                                 print '</tr>';
                             }
-                    
-                            if ($googleXCount > 0) {
+
+                            if (isset($googleXCount) && $googleXCount > 0) {
                                 print '<tr>';
                                     print '<td><img src="img/product_3.jpg" alt="" border=3 height=100 width=100></img>
                                     </td>';
@@ -165,10 +172,10 @@ session_start();
                                     print '<td>' . $googleXPrice. ' SEK</td>';
                                     print '<td>';
                                         print '<select class="browser-default">';
-                                        print '<option value="" disabled selected>' . $googleXCount . '</option>';  
+                                        print '<option value="" disabled selected>' . $googleXCount . '</option>';
                                         for ($x = 0; $x <= 10; $x++) {
-                                                print '<option value="1">' . $x . '</option>'; 
-                                        } 
+                                                print '<option value="1">' . $x . '</option>';
+                                        }
                                         print '</select>';
                                     print '</td>';
                                 print '</tr>';
@@ -188,31 +195,38 @@ session_start();
 							</thead>
 							<tbody>
 								<tr>
-									<?php 
-                                        $iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
-                                        $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
-                                        $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
-                    
-                                        $iFone7Price = $_SESSION['cart']['iFone7']['price'];
-                                        $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
-                                        $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
-                                    
+									<?php
+													if(isset($_SESSION['cart']['iFone7'])){
+													  $iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
+													  $iFone7Price = $_SESSION['cart']['iFone7']['price'];
+													 }
+
+													 if(isset($_SESSION['cart']['ZamZung7'])){
+														$zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
+														$zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+													 }
+
+													 if(isset($_SESSION['cart']['GoogleX']['product'])){
+														$googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
+														$googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+													 }
+
                                         $total = 0;
-                                    
-                                        if ($iFone7Count > 0) {
+
+                                        if (isset($iFone7Count) && $iFone7Count > 0) {
                                             $total += $iFone7Count * $iFone7Price;
-                                        } 
-                                        
-                                        if ($zamZung7Count > 0) {
+                                        }
+
+                                        if (isset($zamZung7Count) && $zamZung7Count > 0) {
                                             $total += $zamZung7Count * $zamZung7Price;
-                                        } 
-                                    
-                                        if ($googleXCount > 0) {
+                                        }
+
+                                        if (isset($googleXCount) && $googleXCount > 0) {
                                             $total += $googleXCount * $googleXPrice;
                                         }
-                                
+
                                         print '<td>' . $total . ' SEK</td>';
-                                            
+
                                     ?>
 								</tr>
 							</tbody>
