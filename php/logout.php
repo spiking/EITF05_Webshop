@@ -16,12 +16,12 @@ session_destroy();
     <meta name="theme-color" content="#2196F3">
     <title>MMM - Log Out</title>
     
-    <link rel="stylesheet" href="css/style-login-logout.css">
+    <link rel="stylesheet" href="../css/style-login-logout.css">
     
 </head>
 
 <body>
-    <form action="login.html" method="post">
+    <form action="../login.html" method="post">
 		<hgroup-alt>
         <h1 style="color:#2196F3; margin-bottom:40px;">Magical Mobile Market</h1>
         <hr width="250px">
@@ -34,7 +34,7 @@ session_destroy();
     
     <!--jQuery-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/login-logout.js"></script>
+    <script src="../js/login-logout.js"></script>
 
 </body>
 </html>

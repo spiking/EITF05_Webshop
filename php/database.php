@@ -21,7 +21,7 @@ class Database {
 				$this->conn = new PDO("mysql:host=$this->_host;dbname=$this->_database",
 					$this->_username, $this->_password);
 			} catch (PDOException $e) {
-				header('location: /connection_error.html');
+				header('location: ../connection_error.html');
 			}
 		}
 		return $this->conn;

@@ -53,15 +53,15 @@ session_start();
 							<li><a href="index.php">Home</a></li>
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
-							<li><a href="cart.php">Cart</a></li>
+							<li><a href="php/cart.php">Cart</a></li>
 							<?php 
 							
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
-								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+								print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 							} else {
 								print '<li><a href="login.html">Login</a></li>';
-							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							//	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
 	
                             ?>
@@ -70,15 +70,15 @@ session_start();
 							<li><a href="index.php">Home</a></li>
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
-							<li><a href="cart.php">Cart</a></li>
+							<li><a href="php/cart.php">Cart</a></li>
 							<?php 
 							
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
-								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+								print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 							} else {
 								print '<li><a href="login.html">Login</a></li>';
-							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+							//	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
 	
                             ?>
@@ -324,7 +324,7 @@ session_start();
 		<script>
 			function productAjax(product) {
 				$.ajax({
-					url: 'addToCart.php'
+					url: 'php/addToCart.php'
 					, type: 'POST'
 					, data: {
 						"productType": product

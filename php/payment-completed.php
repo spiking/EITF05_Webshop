@@ -14,10 +14,10 @@ session_start();
     <title>Starter Template - Materialize</title>
 
     <!--    CSS -->
-    <link href="css/style-payment-completed.css" type="text/css" rel="stylesheet">
-    <link href="css/style-main.css" type="text/css" rel="stylesheet">
+    <link href="../css/style-payment-completed.css" type="text/css" rel="stylesheet">
+    <link href="../css/style-main.css" type="text/css" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
 
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,7 +33,7 @@ session_start();
 					<div class="nav-wrapper">
 						<a href="#" id="logo-container" class="brand-logo">MMM</a>
 						<ul class="right hide-on-med-and-down">
-							<li><a href="index.php">Home</a></li>
+							<li><a href="../index.php">Home</a></li>
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
 							<li><a href="cart.php">Cart</a></li>
@@ -43,14 +43,14 @@ session_start();
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							} else {
-								print '<li><a href="login.html">Login</a></li>';
+								print '<li><a href="../login.html">Login</a></li>';
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
 	
                             ?>
 						</ul>
 						<ul id="nav-mobile" class="side-nav">
-							<li><a href="index.php">Home</a></li>
+							<li><a href="../index.php">Home</a></li>
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
 							<li><a href="cart.php">Cart</a></li>
@@ -60,7 +60,7 @@ session_start();
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							} else {
-								print '<li><a href="login.html">Login</a></li>';
+								print '<li><a href="../login.html">Login</a></li>';
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
 	
@@ -160,8 +160,8 @@ session_start();
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!--   Script Files -->
-    <script src="js/materialize-min.js"></script>
-    <script src="js/main-min.js"></script>
+    <script src="../js/materialize-min.js"></script>
+    <script src="../js/main-min.js"></script>
 
 
 </body>

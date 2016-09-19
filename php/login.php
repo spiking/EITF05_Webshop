@@ -5,7 +5,7 @@
 		$_SESSION['name'] = $name;
 		$_SESSION['email'] = $email;
 		$_SESSION['address'] = $address;
-		header("location: index.php");
+		header("location: ../index.php");
 	}
 
 	include('database.php');
@@ -43,7 +43,7 @@
 
 				if ($hash === $stored_password_hash){
 					setUpSession($name, $email, $address);
-					header("location: index.php");
+					header("location: ../index.php");
 				} else {
 					//log ip and increment number of failed attempts
 					$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
@@ -51,7 +51,7 @@
 				}
 			} else {
 				//log ip and increment number of failed attempts
-				$db->logAttempt($_SERVER['REMOTE_ADDR']);
+				$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
 				print "Wrong username and/or password";
 			}
 		}
