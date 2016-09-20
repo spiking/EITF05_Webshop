@@ -1,3 +1,69 @@
+$('#btn-login').click(function() {
+	console.log('clicked login button');
+	$.ajax({
+		type: 'POST',
+		url: '../php/login.php',
+		data: $('#login-form').serialize(),
+		dataType: 'json',
+		success: function(data) {    
+			if (data.error == true) {
+				console.log('Invalid credentials.');
+				$('#login-error').html(data.msg);
+				$('#login-error').fadeIn(1000);
+				$('#login-error').fadeOut(3000);
+			} else {
+				console.log('Correct credentials.');
+				window.location.href = 'index.php';
+			}
+		},
+		beforeSend: function() {
+//			$('#btn-login').html('Loading...');
+		},
+		complete: function() {
+			console.log('ajax call completed');
+		},
+		error: function(exception) {
+			console.log(exception);
+		}
+	});
+	return false;
+});
+
+$('#btn-register').click(function() {
+	console.log('clicked register button');
+	$.ajax({
+		type: 'POST',
+		url: '../php/login.php',
+		data: $('#register-form').serialize(),
+		dataType: 'json',
+		success: function(data) {    
+			if (data.error == true) {
+                console.log("Failures")
+				$('#register-error').html(data.msg);
+				$('#register-error').fadeIn(1000);
+				$('#register-error').fadeOut(3000);
+			} else {
+                console.log("Successfull reg")
+                window.location.href = 'index.php';
+				$('#register-success').html(data.msg);
+				$('#register-success').fadeIn(1000);
+				$('#register-success').fadeOut(3000);
+			}
+		},
+		beforeSend: function() {
+//			$('#btn-register').html('Loading...');
+		},
+		complete: function() {
+            console.log('ajax call completed');
+		},
+		error: function(exception) {
+			console.log(exception);
+		}
+	});
+	return false;
+});
+
+
 $(window, document, undefined).ready(function () {
 
     $('input').blur(function () {
@@ -34,35 +100,19 @@ $(window, document, undefined).ready(function () {
 
 });
 
-function showDiv() {
-
-    document.getElementById('emailDiv').style.display = "block"
-    document.getElementById('addressDiv').style.display = "block"
-    document.getElementById('registerText').onclick = hideDiv;
-    document.getElementById('registerText').innerHTML = "Already have an account?"
-    document.getElementById('title').innerHTML = 'Sign Up'
-    document.getElementById('loginButton').innerHTML = 'Sign Up'
-}
-
-function hideDiv() {
-
-    document.getElementById('emailDiv').style.display = "none";
-    document.getElementById('addressDiv').style.display = "none";
-    document.getElementById('registerText').onclick = showDiv;
-    document.getElementById('registerText').innerHTML = "Don't have an account?"
-    document.getElementById('title').innerHTML = 'Login'
-    document.getElementById('loginButton').innerHTML = 'Login'
+function toggleForm(type) {
+    
+    console.log(type)
+    
+    if(type == "register") {
+        document.getElementById('register-form').style.display = "block";
+        document.getElementById('login-form').style.display = "none";
+    } else {
+        document.getElementById('register-form').style.display = "none";
+        document.getElementById('login-form').style.display="block";
+    }
 }
 
 function clearData() {
-    
-    if(document.getElementById) {
-        document.form.reset();
-    }
-    
-//    $("#usernameInput").val('');
-//    $("#emailInput").val('');
-//    $("#addressInput").val('');
-//    $("#passwordInput").val('');
-//    console.log("I've been called");
+
 }

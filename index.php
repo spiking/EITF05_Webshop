@@ -2,7 +2,7 @@
 
 session_start(); 
 
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['ID'])) {
     session_destroy();
     header("location: login.html");
 }
@@ -324,6 +324,7 @@ if (!isset($_SESSION['name'])) {
 
 		<script>
 			function productAjax(product) {
+        
 				$.ajax({
 					url: 'php/addToCart.php'
 					, type: 'POST'

@@ -5,7 +5,8 @@
 		$_SESSION['name'] = $name;
 		$_SESSION['email'] = $email;
 		$_SESSION['address'] = $address;
-		header("location: ../index.php");
+        $_SESSION['ID'] = session_regenerate_id();
+//		header("location: ../index.php");
 	}
 
 	include('database.php');
@@ -16,6 +17,8 @@
 	$password = $_POST['password'];
 	$db = new Database();
 
+    $response = [];
+
 	if (strlen($name) > 0 && strlen($address) > 0 && strlen($email) > 0 && strlen($password) > 0) {
 		/*sanitize input*/
     	$salt = base64_encode(openssl_random_pseudo_bytes(8));
@@ -25,12 +28,26 @@
 
 		if($results > 0){
 			setUpSession($name, $email, $address);
+            $response = [ 
+                'error' => false,
+                'msg' => 'Succesfull sign up!'	
+            ];
 		} else {
-			print "Could not register user";
+//			print "Could not register user";
+            
+            $response = [
+			'error' => true,
+			'msg' => 'Error!'
+		];
+            
 		}
 	} else if (strlen($name) > 0 && strlen($password) > 0) {
 		if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
-			print "Try again in 30 minutes from your last try";
+            $response = [
+                'error' => true,
+                'msg' => 'Try again in 30 minutes!'
+		    ];
+//			print "Try again in 30 minutes from your last try";
 		} else {
 			$sql = "SELECT * FROM users WHERE userName = '$name'";
 			$results = $db -> executeQuery($sql);
@@ -43,18 +60,38 @@
 
 				if ($hash === $stored_password_hash){
 					setUpSession($name, $email, $address);
-					header("location: ../index.php");
+                    $response = [ 
+                        'error' => false,
+                        'msg' => 'Succesfull login!'	
+                    ];
+//					header("location: ../index.php");
 				} else {
 					//log ip and increment number of failed attempts
 					$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
-					print "Wrong username and/or password";
+                    $response = [
+                        'error' => true,
+                        'msg' => 'Incorrect Credentials!'
+		            ];
+//					print "Wrong username and/or password";
 				}
 			} else {
 				//log ip and increment number of failed attempts
 				$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
-				print "Wrong username and/or password";
+                $response = [
+                    'error' => true,
+                    'msg' => 'Incorrect Credentials!'
+                ];
+//				print "Wrong username and/or password";
 			}
 		}
-	}
+	} else {
+            $response = [
+                'error' => true,
+                'msg' => 'One or more blank fields.'
+		    ];
+    }
+
+    header('Content-Type: application/json');
+	echo json_encode($response);
 	//redirect to page
 ?>
