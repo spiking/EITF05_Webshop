@@ -118,7 +118,7 @@ if (!isset($_SESSION['ID'])) {
 						  }
 
 					if (!empty($_SESSION['cart'])) {
-						print '<table>';
+						print '<table id="cart-table">';
 						    print '<thead>';
                             	print '<tr>';
 						        print '<th data-field="img">Product</th>';
@@ -128,8 +128,10 @@ if (!isset($_SESSION['ID'])) {
                             print '</tr>';
 						 print '</thead>';
 					} else {
-						print '<h5 id="cartEmpty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
+						print '<h5 id="cart-empty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
 					}
+                    
+                        print '<h5 id="cart-empty-hidden" style="color:grey; font-size:18px; margin-top:20px; display:none">Empty</h5>';
                         print '<tbody>';
                             print '<tr>';
                             if (isset($iFone7Count) && $iFone7Count > 0) {
@@ -139,10 +141,10 @@ if (!isset($_SESSION['ID'])) {
                                     print '<td>' . $iFone7Name . '</td>';
                                     print '<td>' . $iFone7Price . ' SEK</td>';
                                     print '<td>';
-                                        print '<select class="browser-default" updateCart="updateCart(this.value)">';
+                                        print '<select class="browser-default" name="iFone_amount" id="iFone_amount">';
                                         print '<option value="" disabled selected>' . $iFone7Count . '</option>';
-                                        for ($x = 0; $x <= 10; $x++) {
-                                                print '<option value="1">' . $x . '</option>';
+                                        for ($x = 0; $x <= 100; $x++) {
+                                                print '<option value=' . $x . '>' . $x . '</option>';
                                         }
                                         print '</select>';
                                     print '</td>';
@@ -156,10 +158,10 @@ if (!isset($_SESSION['ID'])) {
                                     print '<td>' . $zamZung7Name . '</td>';
                                     print '<td>' . $zamZung7Price . ' SEK</td>';
                                     print '<td>';
-                                        print '<select class="browser-default">';
+                                        print '<select class="browser-default" name="ZamZung7_amount" id="ZamZung7_amount">';
                                         print '<option value="" disabled selected>' . $zamZung7Count . '</option>';
-                                        for ($x = 0; $x <= 10; $x++) {
-                                                print '<option value="1">' . $x . '</option>';
+                                        for ($x = 0; $x <= 100; $x++) {
+                                               print '<option value=' . $x . '>' . $x . '</option>';
                                         }
                                         print '</select>';
                                     print '</td>';
@@ -173,10 +175,10 @@ if (!isset($_SESSION['ID'])) {
                                     print '<td>' . $googleXName . '</td>';
                                     print '<td>' . $googleXPrice. ' SEK</td>';
                                     print '<td>';
-                                        print '<select class="browser-default">';
+                                        print '<select class="browser-default" name="GoogleX_amount" id="GoogleX_amount">';
                                         print '<option value="" disabled selected>' . $googleXCount . '</option>';
-                                        for ($x = 0; $x <= 10; $x++) {
-                                                print '<option value="1">' . $x . '</option>';
+                                        for ($x = 0; $x <= 100; $x++) {
+                                                print '<option value=' . $x . '>' . $x . '</option>';
                                         }
                                         print '</select>';
                                     print '</td>';
@@ -227,14 +229,14 @@ if (!isset($_SESSION['ID'])) {
                                             $total += $googleXCount * $googleXPrice;
                                         }
 
-                                        print '<td>' . $total . ' SEK</td>';
+                                        print '<td class="total-price">' . $total . ' SEK</td>';
 
                                     ?>
                                 </tr>
                             </tbody>
                         </table>
                 </div>
-                <a href="#" class="waves-effect waves-light btn-large red" style="margin-top:20px;" onclick="emptyCart()">Empty Cart</a>
+                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn">Empty Cart</button>
             </div>
         </div>
 
@@ -296,43 +298,13 @@ if (!isset($_SESSION['ID'])) {
             </div>
         </footer>
 
-        <script>
-            function emptyCart() {
-                $.ajax({
-                    url: "emptyCart.php", //the page containing php script
-                    type: "POST", //request type
-                    success: function (result) {
-                        /*alert(result);*/
-                    }
-                });
-                location.reload();
-            }
-        </script>
-        
-<!--        Not implemented yet -->
-        
-        <script>
-            function updateCart(product, quantity) {
-                $.ajax({
-                    url: 'updateCart.php'
-                    , type: 'POST'
-                    , data: {
-                        "quantity": product
-                        , quantity
-                    }
-                    , success: function (response) {
-                        console.log(quantity);
-                    }
-                });
-            }
-        </script>
-
         <!--jQuery-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
         <!--   Script Files -->
         <script src="../js/materialize-min.js"></script>
-        <script src="auth.js"></script>
+        <script src="../js/empty-cart.js"></script>
+        <script src="../js/update-cart.js"></script>
         <script src="../js/main-min.js"></script>
 
     </body>
