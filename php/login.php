@@ -30,7 +30,7 @@
 			setUpSession($name, $email, $address);
             $response = [ 
                 'error' => false,
-                'msg' => 'Succesfull sign up!'	
+                'msg' => 'Succesfull sign up'	
             ];
 		} else {
 //			print "Could not register user";
@@ -45,7 +45,7 @@
 		if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [
                 'error' => true,
-                'msg' => 'Try again in 30 minutes!'
+                'msg' => 'Try again in 30 minutes'
 		    ];
 //			print "Try again in 30 minutes from your last try";
 		} else {
@@ -62,7 +62,7 @@
 					setUpSession($name, $email, $address);
                     $response = [ 
                         'error' => false,
-                        'msg' => 'Succesfull login!'	
+                        'msg' => 'Succesfull login'	
                     ];
 //					header("location: ../index.php");
 				} else {
@@ -70,7 +70,7 @@
 					$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
                     $response = [
                         'error' => true,
-                        'msg' => 'Incorrect Credentials!'
+                        'msg' => 'Incorrect Credentials'
 		            ];
 //					print "Wrong username and/or password";
 				}
@@ -79,7 +79,7 @@
 				$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
                 $response = [
                     'error' => true,
-                    'msg' => 'Incorrect Credentials!'
+                    'msg' => 'Incorrect Credentials'
                 ];
 //				print "Wrong username and/or password";
 			}
@@ -87,7 +87,7 @@
 	} else {
             $response = [
                 'error' => true,
-                'msg' => 'One or more blank fields.'
+                'msg' => 'One or more blank fields'
 		    ];
     }
 

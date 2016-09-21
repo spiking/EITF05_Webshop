@@ -148,8 +148,8 @@ if (!isset($_SESSION['ID'])) {
 								<img class="activator" src="img/product_1.jpg">
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
-                        | 7 490 kr
+								<p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
+                        | 7490 kr</p>
                         </span>
 								<p><a class="waves-effect waves-light btn" name="insert" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000); productAjax('iFone7')">BUY IT NOW</a></p>
 							</div>
@@ -165,9 +165,9 @@ if (!isset($_SESSION['ID'])) {
 								<img class="activator" src="img/product_2.jpg">
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
-                        | 6 990 kr
-                        </span>
+								<p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
+                        | 6990 kr
+                                    </span></p>
 								<p><a class="waves-effect waves-light btn" name="product" value="iFone7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000); productAjax('ZamZung7')" )>BUY IT NOW</a></p>
 							</div>
 
@@ -183,9 +183,9 @@ if (!isset($_SESSION['ID'])) {
 								<img class="activator" src="img/product_3.jpg">
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
-                        | 4 990 kr
-                        </span>
+								<p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
+                        | 4990 kr
+                                    </span></p>
 								<p><a class="waves-effect waves-light btn" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000); productAjax('GoogleX')">BUY IT NOW</a></p>
 							</div>
 
@@ -201,9 +201,9 @@ if (!isset($_SESSION['ID'])) {
 								<img class="activator" src="img/product_1.jpg">
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
-                        | 7 490 kr
-                        </span>
+								<p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
+                        | 7490 kr
+                                    </span></p>
 								<p><a class="waves-effect waves-light btn" name="insert" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000); productAjax('iFone7')">BUY IT NOW</a></p>
 							</div>
 
@@ -219,9 +219,9 @@ if (!isset($_SESSION['ID'])) {
 								<img class="activator" src="img/product_2.jpg">
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
-                        | 6 990 kr
-                        </span>
+								<p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
+                        | 6990 kr
+                                    </span></p>
 								<p><a class="waves-effect waves-light btn" name="product" value="iFone7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000); productAjax('ZamZung7')" )>BUY IT NOW</a></p>
 							</div>
 
@@ -237,9 +237,9 @@ if (!isset($_SESSION['ID'])) {
 								<img class="activator" src="img/product_3.jpg">
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
-                        | 4 990 kr
-                        </span>
+								<p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
+                        | 4990 kr
+                                    </span></p>
 								<p><a class="waves-effect waves-light btn" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000); productAjax('GoogleX')">BUY IT NOW</a></p>
 							</div>
 

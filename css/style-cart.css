@@ -143,6 +143,10 @@ footer {
     color: white;
 }
 
+p.word-break {
+    word-break: keep-all;
+}
+
 #confirmButton {
     background-color: #2196F3;
     float: left;
