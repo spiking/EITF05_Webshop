@@ -1,9 +1,8 @@
 <?php
 
-	function setUpSession($name, $email, $address) {
+	function setUpSession($name, $address) {
 		session_regenerate_id();
 		$_SESSION['name'] = $name;
-		$_SESSION['email'] = $email;
 		$_SESSION['address'] = $address;
         $_SESSION['ID'] = session_regenerate_id();
 //		header("location: ../index.php");
@@ -12,14 +11,15 @@
 	include('database.php');
 	session_start();
 	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$address = $_POST['address'];
 	$password = $_POST['password'];
+	if(isset($_POST['address'])){
+		$address = $_POST['address'];
+	}
 	$db = new Database();
 
     $response = [];
 
-	if (strlen($name) > 0 && strlen($address) > 0 && strlen($email) > 0 && strlen($password) > 0) {
+	if (isset($name) && isset($address) && isset($password)) {
 		/*sanitize input*/
     	$salt = base64_encode(openssl_random_pseudo_bytes(8));
 		$hashed_password = hash('sha512', $password . $salt);
@@ -27,21 +27,21 @@
 		$results = $db -> executeUpdate($sql);
 
 		if($results > 0){
-			setUpSession($name, $email, $address);
-            $response = [ 
+			setUpSession($name, $address);
+            $response = [
                 'error' => false,
-                'msg' => 'Succesfull sign up'	
+                'msg' => 'Succesfull sign up'
             ];
 		} else {
 //			print "Could not register user";
-            
+
             $response = [
 			'error' => true,
 			'msg' => 'Error!'
 		];
-            
+
 		}
-	} else if (strlen($name) > 0 && strlen($password) > 0) {
+	} else if (isset($name) && isset($password)) {
 		if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [
                 'error' => true,
@@ -59,10 +59,12 @@
 				$hash = hash('sha512', $password . $salt);
 
 				if ($hash === $stored_password_hash){
-					setUpSession($name, $email, $address);
-                    $response = [ 
+					$address = $results[0]['address'];
+					setUpSession($name, $address);
+					$db->clearLoginAttempts($_SERVER['REMOTE_ADDR']);
+                    $response = [
                         'error' => false,
-                        'msg' => 'Succesfull login'	
+                        'msg' => 'Succesfull login'
                     ];
 //					header("location: ../index.php");
 				} else {
