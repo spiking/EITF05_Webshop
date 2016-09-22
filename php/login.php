@@ -28,7 +28,7 @@
 		if (!checkPwdReq($password)) {
 			$response = [
                 'error' => true,
-                'msg' => 'Please choose a strong password:</br>At least one number</br>At least one lower case character</br>At least one upper case character'
+                'msg' => 'The password must contain at least:</br>7 characters</br>A Number</br>A lower case</br>An upper case'
             ];
 		} else {
 			/*sanitize input*/
