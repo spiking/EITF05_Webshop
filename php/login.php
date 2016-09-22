@@ -8,6 +8,11 @@
 //		header("location: ../index.php");
 	}
 
+	function checkPwdReq($pwd) {
+		return true; //while in development
+		//return strlen($pwd) > 7 && preg_match("#[0-9]+#", $pwd) && preg_match("#[a-z]+#", $pwd) && preg_match("#[A-Z]+#", $pwd);
+	}
+
 	include('database.php');
 	session_start();
 	$name = $_POST['name'];
@@ -20,25 +25,32 @@
     $response = [];
 
 	if (isset($name) && isset($address) && isset($password)) {
-		/*sanitize input*/
-		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO Users VALUES(?, ?, ?)";
-		$results = $db -> executeUpdate($sql, [$name, $hashed_password, $address]);
-
-		if($results > 0){
-			setUpSession($name, $address);
-            $response = [
-                'error' => false,
-                'msg' => 'Succesfull sign up'
+		if (!checkPwdReq($password)) {
+			$response = [
+                'error' => true,
+                'msg' => 'Please choose a strong password:</br>At least one number</br>At least one lower case character</br>At least one upper case character'
             ];
 		} else {
-//			print "Could not register user";
+			/*sanitize input*/
+			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+			$sql = "INSERT INTO Users VALUES(?, ?, ?)";
+			$results = $db -> executeUpdate($sql, [$name, $hashed_password, $address]);
 
-            $response = [
-			'error' => true,
-			'msg' => 'Username already taken'
-		];
+			if($results > 0){
+				setUpSession($name, $address);
+	            $response = [
+	                'error' => false,
+	                'msg' => 'Succesfull sign up'
+	            ];
+			} else {
+	//			print "Could not register user";
 
+	            $response = [
+				'error' => true,
+				'msg' => 'Username already taken'
+			];
+
+			}
 		}
 	} else if (isset($name) && isset($password)) {
 		if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
