@@ -21,9 +21,8 @@
 
 	if (isset($name) && isset($address) && isset($password)) {
 		/*sanitize input*/
-    	$salt = base64_encode(openssl_random_pseudo_bytes(8));
-		$hashed_password = hash('sha512', $password . $salt);
-		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$salt', '$address')";
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$address')";
 		$results = $db -> executeUpdate($sql);
 
 		if($results > 0){
@@ -37,7 +36,7 @@
 
             $response = [
 			'error' => true,
-			'msg' => 'Error!'
+			'msg' => 'Username already taken'
 		];
 
 		}
@@ -54,11 +53,8 @@
 			$count = count($results);
 
 			if ($count == 1){
-				$salt = $results[0]['salt'];
 				$stored_password_hash = $results[0]['password'];
-				$hash = hash('sha512', $password . $salt);
-
-				if ($hash === $stored_password_hash){
+				if (password_verify($password, $stored_password_hash)){
 					$address = $results[0]['address'];
 					setUpSession($name, $address);
 					$db->clearLoginAttempts($_SERVER['REMOTE_ADDR']);
