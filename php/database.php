@@ -27,7 +27,7 @@ class Database {
 		return $this->conn;
 	}
 
-	public function executeQuery($query, $param = null) {
+	public function executeQuery($query, $param) {
 		$result = false;
 		try {
 			$stmt = $this->getConnection()->prepare($query);
@@ -40,7 +40,7 @@ class Database {
 		return $result;
 	}
 
-    public function executeUpdate($query, $param = null) {
+    public function executeUpdate($query, $param) {
 		try {
 			$stmt = $this->getConnection()->prepare($query);
   			$stmt->execute($param);
@@ -55,8 +55,8 @@ class Database {
 	/*Login attempts tracking*/
 
 	public function confirmIPAddress($ip){
-		$sql = "Select attempts, UNIX_TIMESTAMP(failTime) as failTime, (CASE WHEN failTime IS NOT NULL THEN 'Denied' ELSE 'Approved' END) as Status FROM loginAttempts WHERE ip = '$ip'";
-		$result = $this->executeQuery($sql);
+		$sql = "Select attempts, UNIX_TIMESTAMP(failTime) as failTime, (CASE WHEN failTime IS NOT NULL THEN 'Denied' ELSE 'Approved' END) as Status FROM loginAttempts WHERE ip = ?";
+		$result = $this->executeQuery($sql, [$ip]);
 
 		if(count($result) == 0){
 			//Case: IP not in database
@@ -77,29 +77,29 @@ class Database {
 
 	public function addLoginAttempt($ip){
 
-		$sql = "SELECT * FROM loginAttempts WHERE IP ='$ip'";
-		$result = $this->executeQuery($sql);
+		$sql = "SELECT * FROM loginAttempts WHERE IP = ?";
+		$result = $this->executeQuery($sql, [$ip]);
 
 		if($result){
 			$attempts = $result[0]["attempts"] + 1;
 
 			if($attempts == 5){
-				$sql = "UPDATE loginAttempts SET attempts ='$attempts', failTime = NOW() WHERE IP = '$ip'";
-				$this->executeUpdate($sql);
+				$sql = "UPDATE loginAttempts SET attempts ='$attempts', failTime = NOW() WHERE IP = ?";
+				$this->executeUpdate($sql, [$ip]);;
 			}
 			else{
-				$sql = "UPDATE loginAttempts SET attempts = '$attempts' WHERE IP = '$ip'";
-				$this->executeUpdate($sql);
+				$sql = "UPDATE loginAttempts SET attempts = '$attempts' WHERE IP = ?";
+				$this->executeUpdate($sql, [$ip]);;
 			}
 		}else{
-			$sql = "INSERT INTO loginAttempts VALUES ('$ip', 1, NULL)";
-			$this->executeUpdate($sql);
+			$sql = "INSERT INTO loginAttempts VALUES (?, 1, NULL)";
+			$this->executeUpdate($sql, [$ip]);;
 		}
 	}
 
 	public function clearLoginAttempts($ip) {
-		$sql = "UPDATE loginAttempts SET attempts = 0, failTime = NULL WHERE ip = '$ip'";
-		return $this->executeUpdate($sql);
+		$sql = "UPDATE loginAttempts SET attempts = 0, failTime = NULL WHERE ip = ?";
+		return $this->executeUpdate($sql, [$ip]);
 	}
 
 

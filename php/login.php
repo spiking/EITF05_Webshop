@@ -22,8 +22,8 @@
 	if (isset($name) && isset($address) && isset($password)) {
 		/*sanitize input*/
 		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO Users VALUES('$name', '$hashed_password', '$address')";
-		$results = $db -> executeUpdate($sql);
+		$sql = "INSERT INTO Users VALUES(?, ?, ?)";
+		$results = $db -> executeUpdate($sql, [$name, $hashed_password, $address]);
 
 		if($results > 0){
 			setUpSession($name, $address);
@@ -48,8 +48,8 @@
 		    ];
 //			print "Try again in 30 minutes from your last try";
 		} else {
-			$sql = "SELECT * FROM users WHERE userName = '$name'";
-			$results = $db -> executeQuery($sql);
+			$sql = "SELECT * FROM users WHERE userName = ?";
+			$results = $db -> executeQuery($sql, [$name]);
 			$count = count($results);
 
 			if ($count == 1){
