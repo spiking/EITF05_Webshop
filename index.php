@@ -7,12 +7,12 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
-//$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'price' => 7495, 'quantity' => 0);
-//$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'price' => 6990, 'quantity' => 0);
-//$_SESSION['cart']['GoogleX'] = array('product' => 'GoogleX', 'price' => 4990, 'quantity' => 0);
+// Empty cart if payment completed
 
-//$_SESSION['cart'] = array();
-//print_r($_SESSION['cart']);
+if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
+    $_SESSION['cart'] = array();
+    $_SESSION['PAYMENT_COMPLETED'] = false;
+}
 
 ?>
 	<!DOCTYPE html>

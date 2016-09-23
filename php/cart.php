@@ -7,13 +7,12 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
-//$_SESSION['cart']['iFone7'] = array('product' => 'iFone7', 'quantity' => 0);
-//$_SESSION['cart']['ZamZung7'] = array('product' => 'ZamZung', 'quantity' => 0);
-//$_SESSION['cart']['GoogleX'] = array('product' => 'GoogleX', 'quantity' => 0);
+// Empty cart if payment completed
 
-//print_r($_SESSION['cart']);
-
-/*$_SESSION['cart'] = array(); */
+if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
+    $_SESSION['cart'] = array();
+    $_SESSION['PAYMENT_COMPLETED'] = false;
+}
 
 ?>
 
@@ -99,6 +98,7 @@ if (!isset($_SESSION['ID'])) {
                     <h4 class="header text_b" id="cartTitle">Cart</h4>
 
                     <?php
+                    
                     if(isset($_SESSION['cart']['iFone7'])){
 							$iFone7Name = $_SESSION['cart']['iFone7']['product'];
 							$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
@@ -122,7 +122,7 @@ if (!isset($_SESSION['ID'])) {
 						    print '<thead>';
                             	print '<tr>';
 						        print '<th data-field="img">Product</th>';
-                                print '<th data-field="name">Name</th>';
+                                print '<th data-field="productName">Name</th>';
                                 print '<th data-field="price">Price</th>';
                                 print '<th data-field="amount">Amount</th>';
                             print '</tr>';
@@ -242,28 +242,22 @@ if (!isset($_SESSION['ID'])) {
 
         <div class="container">
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" method="POST" id="info-form">
                     <h4 class="header text_b">Information</h4>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
+                            <input id="name" name="name" type="text" class="validate">
+                            <label for="name">Username</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
+                            <input id="password" name="password" type="password" class="validate">
+                            <label for="password">Password</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="email" type="email" class="validate">
-                            <label for="email" data-error="Incorrect" data-success="right">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="address" type="text" class="validate">
-                            <label for="address">Address</label>
+                            <label for="email">Email</label>
                         </div>
                     </div>
                     <select class="browser-default">
@@ -275,14 +269,48 @@ if (!isset($_SESSION['ID'])) {
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="creditcard" type="text" class="validate">
+                            <input id="creditcard" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="validate">
                             <label for="creditcard">Credit Card Number</label>
                         </div>
                     </div>
+
+                    <div class="alert" id="confirm-error" style="display:none"></div>
+<!--                    Shoul be of type = 'submit', id -->
+                    <button class="waves-effect waves-light btn-large green" id="confirm-btn" type="button" onclick="validateForm()">Confirm Payment</button>
                 </form>
 
-                <a href="payment-completed.php" class="waves-effect waves-light btn-large green" id="confirmButton">Confirm Payment</a>
-                <div style="margin-top: 10px; display: none;" id="login-error" class="alert alert-danger"></div>
+                <script>
+                    function validateForm() {
+                        console.log('clicked confirm button');
+
+                        var username = document.getElementById("name").value;
+//                        console.log(username);
+                        var password = document.getElementById("password").value;
+//                        console.log(password);
+                        var email = document.getElementById("email").value;
+                        var creditcard = document.getElementById("creditcard").value;
+
+                        var usernameAndPwReg = /^[0-9a-zA-Z_.-]+$/;
+                        var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                        var creditcardReg = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})/;
+
+                        // Credit card should be added, annoying for testing though
+                        if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password) && emailReg.test(email)) {
+
+                            // Check username and password, AJAX 
+
+                            console.log("Check username and PW");
+                            window.location.href = 'payment-completed.php';
+                            
+                        } else {
+                            $('#confirm-error').html('Invalid Input');
+                            $('#confirm-error').fadeIn(1000);
+                            $('#confirm-error').delay(2000);
+                            $('#confirm-error').fadeOut(3000);
+                            
+                        }
+                    }
+                </script>
 
             </div>
         </div>
@@ -304,6 +332,7 @@ if (!isset($_SESSION['ID'])) {
         <!--   Script Files -->
         <script src="../js/materialize-min.js"></script>
         <script src="../js/empty-cart.js"></script>
+        <script src="../js/confirm-payment.js"></script>
         <script src="../js/update-cart.js"></script>
         <script src="../js/main-min.js"></script>
 
