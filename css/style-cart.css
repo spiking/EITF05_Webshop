@@ -154,17 +154,19 @@ p.word-break {
     margin-bottom: 25px;
 }
 
-
 #cartTitle {
     padding-top: 30px;
 }
 
 .alert {
     padding: 15px;
-    background-color: #f44336; /* Red */
+    background-color: #f44336;
     color: white;
-    text-align:center;
+    text-align: center;
     margin-bottom: 15px;
+    border-radius: 2px;
+    position: relative;
+    font-size: 16px;
 }
 
 .closebtn {

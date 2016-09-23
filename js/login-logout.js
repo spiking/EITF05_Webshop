@@ -17,7 +17,7 @@ $('#btn-login').click(function() {
 			}
 		},
 		beforeSend: function() {
-//			$('#btn-login').html('Loading...');
+
 		},
 		complete: function() {
 			console.log('ajax call completed');
@@ -51,7 +51,7 @@ $('#btn-register').click(function() {
 			}
 		},
 		beforeSend: function() {
-//			$('#btn-register').html('Loading...');
+
 		},
 		complete: function() {
             console.log('ajax call completed');

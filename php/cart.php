@@ -24,7 +24,7 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#2196F3">
         <title>MMM - Mobile</title>
-
+    
         <!-- CSS  -->
         <link href="../css/style-main.css" type="text/css" rel="stylesheet">
         <link href="../css/style-cart.css" type="text/css" rel="stylesheet">
@@ -236,13 +236,15 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
                             </tbody>
                         </table>
                 </div>
-                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn">Empty Cart</button>
+                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn" onclick="checkForm()">Empty Cart</button>
             </div>
         </div>
 
+
+
         <div class="container">
             <div class="row">
-                <form class="col s12" method="POST" id="info-form">
+                <form class="col s12" id="info-form" method='post' name="myForm" onsubmit="return false">
                     <h4 class="header text_b">Information</h4>
                     <div class="row">
                         <div class="input-field col s6">
@@ -275,43 +277,12 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
                     </div>
 
                     <div class="alert" id="confirm-error" style="display:none"></div>
-<!--                    Shoul be of type = 'submit', id -->
-                    <button class="waves-effect waves-light btn-large green" id="confirm-btn" type="button" onclick="validateForm()">Confirm Payment</button>
+                    <button class="waves-effect waves-light btn-large green" type="submit" name="submit" value="submit" id="confirm-btn" onclick="validateForm()">Confirm Payment</button>
                 </form>
 
                 <script>
-                    function validateForm() {
-                        console.log('clicked confirm button');
-
-                        var username = document.getElementById("name").value;
-//                        console.log(username);
-                        var password = document.getElementById("password").value;
-//                        console.log(password);
-                        var email = document.getElementById("email").value;
-                        var creditcard = document.getElementById("creditcard").value;
-
-                        var usernameAndPwReg = /^[0-9a-zA-Z_.-]+$/;
-                        var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                        var creditcardReg = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})/;
-
-                        // Credit card should be added, annoying for testing though
-                        if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password) && emailReg.test(email)) {
-
-                            // Check username and password, AJAX 
-
-                            console.log("Check username and PW");
-                            window.location.href = 'payment-completed.php';
-                            
-                        } else {
-                            $('#confirm-error').html('Invalid Input');
-                            $('#confirm-error').fadeIn(1000);
-                            $('#confirm-error').delay(2000);
-                            $('#confirm-error').fadeOut(3000);
-                            
-                        }
-                    }
+                    
                 </script>
-
             </div>
         </div>
 
