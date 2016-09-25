@@ -12,34 +12,8 @@ function validateFormLogin() {
 
     if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password)) {
         console.log("Input Valid");
+        postData('#login-form');
 
-        $.ajax({
-            type: 'POST',
-            url: '../php/login.php',
-            data: $('#login-form').serialize(),
-            dataType: 'json',
-            success: function(data) {
-                if (data.error == true) {
-                    console.log(data.msg);
-                    $('#login-error').html(data.msg);
-                    $('#login-error').fadeIn(1000);
-                    $('#login-error').fadeOut(3000);
-                } else {
-                    console.log('Correct credentials.');
-                    window.location.href = 'index.php';
-                }
-            },
-            beforeSend: function() {
-
-            },
-            complete: function() {
-                console.log('ajax call completed');
-            },
-            error: function(exception) {
-                console.log(exception);
-            }
-        });
-        return false;
     } else {
 
         $('#login-error').html('Invalid Input');
@@ -75,36 +49,7 @@ function validateFormReg() {
 
     if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password)) {
         console.log('clicked register button');
-        $.ajax({
-            type: 'POST',
-            url: '../php/login.php',
-            data: $('#register-form').serialize(),
-            dataType: 'json',
-            success: function(data) {
-                if (data.error == true) {
-                    console.log("Failures")
-                    $('#register-error').html(data.msg);
-                    $('#register-error').fadeIn(1000);
-                    $('#register-error').fadeOut(3000);
-                } else {
-                    console.log("Successfull reg")
-                    window.location.href = 'index.php';
-                    $('#register-success').html(data.msg);
-                    $('#register-success').fadeIn(1000);
-                    $('#register-success').fadeOut(3000);
-                }
-            },
-            beforeSend: function() {
-
-            },
-            complete: function() {
-                console.log('ajax call completed');
-            },
-            error: function(exception) {
-                console.log(exception);
-            }
-        });
-        return false;
+        postData('#register-form');
     } else {
 
         $('#register-error').html('Invalid Input');
@@ -115,6 +60,36 @@ function validateFormReg() {
         $('#register-error').fadeOut(500);
     }
 
+    return false;
+}
+
+function postData(formType) {
+    $.ajax({
+        type: 'POST',
+        url: '../php/login.php',
+        data: $(formType).serialize(),
+        dataType: 'json',
+        success: function(data) {
+            if (data.error == true) {
+                console.log(data.msg);
+                $('#login-error').html(data.msg);
+                $('#login-error').fadeIn(1000);
+                $('#login-error').fadeOut(3000);
+            } else {
+                console.log('Correct credentials.');
+                window.location.href = 'index.php';
+            }
+        },
+        beforeSend: function() {
+
+        },
+        complete: function() {
+            console.log('ajax call completed');
+        },
+        error: function(exception) {
+            console.log(exception);
+        }
+    });
     return false;
 }
 
