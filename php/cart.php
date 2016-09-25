@@ -8,11 +8,15 @@ if (!isset($_SESSION['ID'])) {
 }
 
 // Empty cart if payment completed
-
 if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
     $_SESSION['cart'] = array();
     $_SESSION['PAYMENT_COMPLETED'] = false;
 }
+
+// Generate token for CSRF prevention
+$token = sha1(uniqid(rand(), TRUE));
+$_SESSION['token'] = $token;
+$_SESSION['token_time'] = time();
 
 ?>
 
@@ -200,20 +204,21 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
                             <tbody>
                                 <tr>
                                     <?php
-													if(isset($_SESSION['cart']['iFone7'])){
-													  $iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
-													  $iFone7Price = $_SESSION['cart']['iFone7']['price'];
-													 }
 
-													 if(isset($_SESSION['cart']['ZamZung7'])){
-														$zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
-														$zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
-													 }
+										if(isset($_SESSION['cart']['iFone7'])){
+											$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
+											$iFone7Price = $_SESSION['cart']['iFone7']['price'];
+										}
 
-													 if(isset($_SESSION['cart']['GoogleX']['product'])){
-														$googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
-														$googleXPrice= $_SESSION['cart']['GoogleX']['price'];
-													 }
+										if(isset($_SESSION['cart']['ZamZung7'])){
+											$zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
+											$zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+										}
+
+										if(isset($_SESSION['cart']['GoogleX']['product'])){
+											$googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
+											$googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+										}
 
                                         $total = 0;
 
@@ -240,11 +245,9 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
             </div>
         </div>
 
-
-
         <div class="container">
             <div class="row">
-                <form class="col s12" id="info-form" method='post' name="myForm" onsubmit="return false">
+                <form class="col s12" id="info-form" method='post' name="info-form" onsubmit="return false">
                     <h4 class="header text_b">Information</h4>
                     <div class="row">
                         <div class="input-field col s6">
@@ -276,8 +279,11 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
                         </div>
                     </div>
 
+                    <input hidden="true" name="token" value="<?php echo $token; ?>" />
+
                     <div class="alert" id="confirm-error" style="display:none"></div>
                     <button class="waves-effect waves-light btn-large green" type="submit" name="submit" value="submit" id="confirm-btn" onclick="validateForm()">Confirm Payment</button>
+                    
                 </form>
 
                 <script>
