@@ -21,16 +21,16 @@
 
     <!--   Login form -->
 
-    <form method="post" id="login-form">
+    <form method="post" id="login-form" name="login-form" onsubmit="return false">
         <div class="group" id="usernameDiv">
-            <input type="text" name="name" id="usernameInput"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="name" id="name"><span class="highlight"></span><span class="bar"></span>
             <label id="nameLbl">Name</label>
         </div>
         <div class="group" id="passwordDiv">
-            <input type="password" name="password" id="passwordInput"><span class="highlight"></span><span class="bar"></span>
+            <input type="password" name="password" id="password"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
         </div>
-        <button type="submit" class="button buttonBlue" id="btn-login">Login
+        <button type="submit" class="button buttonBlue" id="btn-login" name="submit" value="submit" onclick="validateFormLogin()">Login
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
 
@@ -39,28 +39,28 @@
         </div>
 
         <footer>
-            <font size="2px"><center><a href="#" onclick="toggleForm('register')" style="color:#333333; text-decoration:none;" id="registerText">Don't have an account?</a></center></font>
+            <font size="2px">
+                <center><a href="#" onclick="toggleForm('register')" style="color:#333333; text-decoration:none;" id="registerText">Don't have an account?</a></center>
+            </font>
         </footer>
     </form>
 
     <!--    Register Form -->
 
-    <form method="post" id="register-form" style="display:none">
+    <form method="post" id="register-form" name="register-form" onsubmit="return false" style="display:none">
         <div class="group" id="usernameDiv">
-            <input type="text" name="name" id="usernameInput"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="name" id="nameReg"><span class="highlight"></span><span class="bar"></span>
             <label id="nameLbl">Name</label>
-
         </div>
-      
         <div class="group" id="addressDiv">
-            <input type="text" name="address" id="addressInput"><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="address" id="addressReg"><span class="highlight"></span><span class="bar"></span>
             <label>Address</label>
         </div>
         <div class="group" id="passwordDiv">
-            <input type="password" name="password" id="passwordInput"><span class="highlight"></span><span class="bar"></span>
+            <input type="password" name="password" id="passwordReg"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
         </div>
-        <button type="submit" class="button buttonBlue" id="btn-register">Sign Up
+        <button type="submit" class="button buttonBlue" id="btn-register" name="submit" value="submit" onclick="validateFormReg()">Sign Up
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
 
@@ -69,7 +69,9 @@
         </div>
 
         <footer>
-            <font size="2px"><center><a href="#" onclick="toggleForm('login')" style="color:#333333; text-decoration:none;" id="registerText">Already have an accoount?</a></center></font>
+            <font size="2px">
+                <center><a href="#" onclick="toggleForm('login')" style="color:#333333; text-decoration:none;" id="registerText">Already have an accoount?</a></center>
+            </font>
         </footer>
     </form>
 
