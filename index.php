@@ -1,6 +1,6 @@
 <?php
 
-session_start(); 
+session_start();
 
 if (!isset($_SESSION['ID'])) {
     session_destroy();
@@ -8,10 +8,11 @@ if (!isset($_SESSION['ID'])) {
 }
 
 // Empty cart if payment completed
-
-if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
-    $_SESSION['cart'] = array();
-    $_SESSION['PAYMENT_COMPLETED'] = false;
+if(isset($_SESSION['PAYMENT_COMPLETED'])){
+  if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
+      $_SESSION['cart'] = array();
+      $_SESSION['PAYMENT_COMPLETED'] = false;
+  }
 }
 
 ?>
@@ -55,8 +56,8 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
 							<li><a href="php/cart.php">Cart</a></li>
-							<?php 
-							
+							<?php
+
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
@@ -64,7 +65,7 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
 								print '<li><a href="login.html">Login</a></li>';
 							//	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
-	
+
                             ?>
 						</ul>
 						<ul id="nav-mobile" class="side-nav">
@@ -72,8 +73,8 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
 							<li><a href="#">Products</a></li>
 							<li><a href="#">Team</a></li>
 							<li><a href="php/cart.php">Cart</a></li>
-							<?php 
-							
+							<?php
+
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
@@ -81,7 +82,7 @@ if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
 								print '<li><a href="login.html">Login</a></li>';
 							//	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
-	
+
                             ?>
 						</ul>
 						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
