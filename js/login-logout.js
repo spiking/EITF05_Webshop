@@ -107,9 +107,16 @@ function postData(formType) {
         success: function(data) {
             if (data.error == true) {
                 console.log(data.msg);
-                $('#login-error').html(data.msg);
-                $('#login-error').fadeIn(1000);
-                $('#login-error').fadeOut(3000);
+                if (formType == "#login-form") {
+                    $('#login-error').html(data.msg);
+                    $('#login-error').fadeIn(1000);
+                    $('#login-error').fadeOut(3000);
+                } else if (formType == "#register-form") {
+                    $('#register-error').html(data.msg);
+                    $('#register-error').fadeIn(1000);
+                    $('#register-error').fadeOut(3000);
+                }
+
             } else {
                 console.log('Correct credentials.');
                 window.location.href = 'index.php';
