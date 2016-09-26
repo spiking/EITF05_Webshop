@@ -329,7 +329,7 @@ if (isset($_SESSION['name'])) {
       <div class="container">
         <!--                    Contact infor or w.e -->
         <div class="row">
-          <h2 class="header text_b"> Reviews </h2>
+          <h2 class="header text_b" id="reviewTitle"> Reviews </h2>
           <ul class="collection">
             <?php
               include('php/database.php');
