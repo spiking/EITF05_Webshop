@@ -19,14 +19,26 @@ function validateFormLogin() {
 
     var usernameReg= /^[0-9a-zA-Z_.-]+$/;
 
+    var msg = "";
+
     if (usernameReg.test(username)) {
-        console.log("Input Valid");
-        postData('#login-form');
+        console.log("Input username Valid");
 
     } else {
+        msg = 'Invalid characters in username';
+    }
 
-        $('#login-error').html('Invalid Input');
-        console.log("Invalid input login form");
+    if (checkPwdReq(password)) {
+        console.log("Input password Valid");
+    } else {
+        msg = 'The password must contain at least:</br>8 characters</br>A Number</br>A special character</br>A lower case</br>An upper case';
+    }
+
+    if (msg.length == 0) {
+        postData('#login-form');
+    } else {
+        $('#login-error').html(msg);
+        console.log(msg);
 
         $('#login-error').fadeIn(500);
         $('#login-error').fadeOut(3000);
@@ -56,12 +68,26 @@ function validateFormReg() {
     // var addressReg = /^[a-zA-Z0-9\s,'-]*$/;
     // Add address, annoying for testing
 
-    if (usernameReg.test(username) && checkPwdReq(password)) {
+    var msg = "";
+
+    if (usernameReg.test(username)) {
+        console.log("Input username Valid");
+
+    } else {
+        msg = 'Invalid characters in username';
+    }
+
+    if (checkPwdReq(password)) {
+        console.log("Input password Valid");
+    } else {
+        msg = 'The password must contain at least:</br>8 characters</br>A Number</br>A special character</br>A lower case</br>An upper case';
+    }
+
+    if (msg.length == 0) {
         console.log('clicked register button');
         postData('#register-form');
     } else {
-
-        $('#register-error').html('Invalid Input');
+        $('#register-error').html(msg);
         console.log("Invalid input reg form");
 
         $('#register-error').fadeIn(500);
