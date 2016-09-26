@@ -19,7 +19,7 @@ function validateFormLogin() {
 
     var usernameReg= /^[0-9a-zA-Z_.-]+$/;
 
-    if (usernameAndPwReg.test(username)) {
+    if (usernameReg.test(username)) {
         console.log("Input Valid");
         postData('#login-form');
 
