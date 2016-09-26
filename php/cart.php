@@ -33,8 +33,8 @@ $_SESSION['token_time'] = time();
         <title>MMM - Mobile</title>
 
         <!-- CSS  -->
-        <link href="../css/style-main.css" type="text/css" rel="stylesheet">
         <link href="../css/style-cart.css" type="text/css" rel="stylesheet">
+        <link href="../css/style-main.css" type="text/css" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
         <!--Import Google Icon Font-->

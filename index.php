@@ -28,8 +28,8 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
     <title>MMM - Mobile</title>
 
     <!-- CSS  -->
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <link href="css/style-main.css" type="text/css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <!--Import materialize.css-->
 
     <!--Import Google Icon Font-->

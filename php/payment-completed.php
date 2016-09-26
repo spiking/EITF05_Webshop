@@ -124,7 +124,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
 						  }
 
 					if (!empty($_SESSION['cart'])) {
-						print '<table id="cart-table">';
+						print '<table id="cart-table-receipt">';
 						    print '<thead>';
                             	print '<tr>';
 						        print '<th data-field="img">Product</th>';
@@ -175,7 +175,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                     print '</table>';
             ?>
 
-                                    <table>
+                                    <table id'cart-table-receipt'>
                                         <h4 class="header text_b"></h4>
                                         <thead>
                                             <tr>
