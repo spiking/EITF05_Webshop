@@ -1,3 +1,12 @@
+function checkPwdReq(pwd) {
+    var nbr = /[0-9]+/;
+    var special = /[\W]+/;
+    var lower = /[a-z]+/;
+    var upper = /[A-Z]+/;
+    return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
+    //return true;
+}
+
 function validateFormLogin() {
 
     console.log("Validate User Input");
@@ -8,9 +17,9 @@ function validateFormLogin() {
     var password = document.getElementById("password").value;
     console.log(password);
 
-    var usernameAndPwReg = /^[0-9a-zA-Z_.-]+$/;
+    var usernameReg= /^[0-9a-zA-Z_.-]+$/;
 
-    if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password)) {
+    if (usernameAndPwReg.test(username)) {
         console.log("Input Valid");
         postData('#login-form');
 
@@ -43,17 +52,17 @@ function validateFormReg() {
         console.log(address);
     }
 
-    var usernameAndPwReg = /^[0-9a-zA-Z_.-]+$/;
+    var usernameReg = /^[0-9a-zA-Z_.-]+$/;
     // var addressReg = /^[a-zA-Z0-9\s,'-]*$/;
     // Add address, annoying for testing
 
-    if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password)) {
+    if (usernameReg.test(username) && checkPwdReq(password)) {
         console.log('clicked register button');
         postData('#register-form');
     } else {
 
         $('#register-error').html('Invalid Input');
-        console.log("Invalid input login form");
+        console.log("Invalid input reg form");
 
         $('#register-error').fadeIn(500);
         $('#register-error').fadeOut(3000);

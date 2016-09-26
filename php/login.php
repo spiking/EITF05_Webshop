@@ -9,8 +9,8 @@
 	}
 
 	function checkPwdReq($pwd) {
-		return true; //while in development
-		//return strlen($pwd) > 7 && preg_match("#[0-9]+#", $pwd) && preg_match("#[a-z]+#", $pwd) && preg_match("#[A-Z]+#", $pwd);
+		//return true; //while in development
+		return strlen($pwd) > 7 && preg_match("#[0-9]+#", $pwd) && preg_match("#[\W]+#", $pwd) && preg_match("#[a-z]+#", $pwd) && preg_match("#[A-Z]+#", $pwd);
 	}
 
 	function containsSpecialChar($input) {
