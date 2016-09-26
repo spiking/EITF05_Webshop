@@ -362,7 +362,7 @@ if (isset($_SESSION['name'])) {
             </li>
           </ul>
 
-          <form class="col s12" id="info-form" method='post' name="info-form">
+          <form class="col s12" id="info-form" method='post' name="info-form"  style="padding-bottom:30px;">
             <h4 class="header text_b" style="padding-top: 20px; padding-bottom:20px;"> Add Review </h4>
             <div class="row">
               <div class="input-field col s6">
