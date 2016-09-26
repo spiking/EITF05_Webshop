@@ -18,6 +18,8 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+        <!-- XSS-prevention, not allowed to load resources from other location -->
+        <meta http-equiv="Content-Security-Policy" Content-Security-Policy-Report-Only:default-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com *.code.jquery.com *.fonts.gstatic.com ;>
         <title>Starter Template - Materialize</title>
 
         <!--    CSS -->
