@@ -22,7 +22,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#2196F3">	
+    <meta name="theme-color" content="#2196F3">
 	<!-- XSS-prevention, not allowed to load resources from other location -->
 	<meta http-equiv="Content-Security-Policy" Content-Security-Policy-Report-Only:default-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com *.code.jquery.com *.fonts.gstatic.com ;>
     <title>MMM - Mobile</title>
@@ -332,7 +332,7 @@ if (isset($_SESSION['name'])) {
           <h2 class="header text_b"> Reviews </h2>
           <ul class="collection">
             <?php
-              include('/php/database.php');
+              include('php/database.php');
               $db = new Database();
               $sql = "SELECT * FROM reviews ORDER BY id DESC";
               $result = $db -> executeQuery($sql, NULL);
