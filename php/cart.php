@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION['ID'])) {
     session_destroy();
-    header("location: login.html");
+    header("location: /login.html");
 }
 
 // Empty cart if payment completed
