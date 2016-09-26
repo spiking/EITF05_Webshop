@@ -8,9 +8,11 @@ if (!isset($_SESSION['ID'])) {
 }
 
 // Empty cart if payment completed
-if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
-    $_SESSION['cart'] = array();
-    $_SESSION['PAYMENT_COMPLETED'] = false;
+if(isset($_SESSION['PAYMENT_COMPLETED'])){
+  if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
+      $_SESSION['cart'] = array();
+      $_SESSION['PAYMENT_COMPLETED'] = false;
+  }
 }
 
 // Generate token for CSRF prevention
@@ -28,7 +30,7 @@ $_SESSION['token_time'] = time();
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#2196F3">
         <title>MMM - Mobile</title>
-    
+
         <!-- CSS  -->
         <link href="../css/style-main.css" type="text/css" rel="stylesheet">
         <link href="../css/style-cart.css" type="text/css" rel="stylesheet">
@@ -102,7 +104,7 @@ $_SESSION['token_time'] = time();
                     <h4 class="header text_b" id="cartTitle">Cart</h4>
 
                     <?php
-                    
+
                     if(isset($_SESSION['cart']['iFone7'])){
 							$iFone7Name = $_SESSION['cart']['iFone7']['product'];
 							$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
@@ -134,7 +136,7 @@ $_SESSION['token_time'] = time();
 					} else {
 						print '<h5 id="cart-empty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
 					}
-                    
+
                         print '<h5 id="cart-empty-hidden" style="color:grey; font-size:18px; margin-top:20px; display:none">Empty</h5>';
                         print '<tbody>';
                             print '<tr>';
@@ -154,7 +156,7 @@ $_SESSION['token_time'] = time();
                                     print '</td>';
                                 print '</tr>';
                             }
-                
+
                             if (isset($zamZung7Count) && $zamZung7Count > 0) {
                                 print '<tr>';
                                     print ' <td><img src="../img/product_2.jpg" alt="" border=3 height=100 width=100></img>
@@ -283,11 +285,11 @@ $_SESSION['token_time'] = time();
 
                     <div class="alert" id="confirm-error" style="display:none"></div>
                     <button class="waves-effect waves-light btn-large green" type="submit" name="submit" value="submit" id="confirm-btn" onclick="validateForm()">Confirm Payment</button>
-                    
+
                 </form>
 
                 <script>
-                    
+
                 </script>
             </div>
         </div>
