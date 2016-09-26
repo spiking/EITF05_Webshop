@@ -328,38 +328,24 @@ if (isset($_SESSION['name'])) {
         <div class="row">
           <h2 class="header text_b" style="padding-top: 20px; padding-bottom:20px;"> Reviews </h2>
           <ul class="collection">
-            <li class="collection-item avatar">
-              <img src="img/batman.png" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line
-                <br> Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/batman.png" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line
-                <br> Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/batman.png" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line
-                <br> Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-            <li class="collection-item avatar">
-              <img src="img/batman.png" alt="" class="circle">
-              <span class="title">Title</span>
-              <p>First Line
-                <br> Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
+            <?php
+              include('/php/database.php');
+              $db = new Database();
+              $sql = "SELECT * FROM reviews ORDER BY id DESC";
+              $result = $db -> executeQuery($sql, NULL);
+
+              for ($x = 0; $x < count($result); $x++){
+                $row = $result[$x];
+                print '<li class="collection-item avatar">';
+                print '<img src="img/batman.png" alt="" class="circle">';
+                print '<span class="title">' . $row['firstName'] . ' ' . $row['lastName'] . '</span>';
+                print '<p>';
+                print $row['review'];
+                print '</p>';
+                print '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>';
+                print '</li>';
+              }
+            ?>
           </ul>
 
           <form class="col s12" id="info-form" method='post' name="info-form"  style="padding-bottom:30px;">

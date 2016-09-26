@@ -18,6 +18,14 @@ CREATE TABLE LoginAttempts(
     PRIMARY KEY (IP)
 );
 
+CREATE TABLE Reviews(
+	id int AUTO_INCREMENT,
+	firstName varchar(20) NOT NULL,
+	lastName varchar(20) NOT NULL,
+	review varchar(100) NOT NULL,
+	PRIMARY KEY (id)
+);
+
 /**Test user*/
 
 /*INSERT INTO Users VALUES('SvenTheKingXXX', 'pw', '1111111111111111', 'gangsterstreet 69');
