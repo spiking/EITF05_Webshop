@@ -18,6 +18,8 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+        <!-- XSS-prevention, not allowed to load resources from other location -->
+        <meta http-equiv="Content-Security-Policy" Content-Security-Policy-Report-Only:default-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com *.code.jquery.com *.fonts.gstatic.com ;>
         <title>Starter Template - Materialize</title>
 
         <!--    CSS -->
@@ -122,7 +124,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
 						  }
 
 					if (!empty($_SESSION['cart'])) {
-						print '<table id="cart-table">';
+						print '<table id="cart-table-receipt">';
 						    print '<thead>';
                             	print '<tr>';
 						        print '<th data-field="img">Product</th>';
@@ -173,7 +175,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                     print '</table>';
             ?>
 
-                                    <table>
+                                    <table id'cart-table-receipt'>
                                         <h4 class="header text_b"></h4>
                                         <thead>
                                             <tr>

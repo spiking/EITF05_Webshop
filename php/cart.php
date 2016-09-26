@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION['ID'])) {
     session_destroy();
-    header("location: login.html");
+    header("location: /login.html");
 }
 
 // Empty cart if payment completed
@@ -29,11 +29,12 @@ $_SESSION['token_time'] = time();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#2196F3">
+        <meta http-equiv="Content-Security-Policy" Content-Security-Policy-Report-Only:default-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com *.code.jquery.com *.fonts.gstatic.com ;>
         <title>MMM - Mobile</title>
 
         <!-- CSS  -->
-        <link href="../css/style-main.css" type="text/css" rel="stylesheet">
         <link href="../css/style-cart.css" type="text/css" rel="stylesheet">
+        <link href="../css/style-main.css" type="text/css" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
         <!--Import Google Icon Font-->

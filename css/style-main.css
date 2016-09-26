@@ -107,9 +107,24 @@ nav ul a {
     padding: 0px 15px;
 }
 
+
+/*.header.text_b {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}*/
+
 .cd-headline.type .cd-words-wrapper {
     vertical-align: top;
     overflow: hidden;
+}
+
+#info-form {
+    padding-bottom: 30px;
+}
+
+#info-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .cd-headline.type .cd-words-wrapper::after {
@@ -298,6 +313,10 @@ nav a.button-collapse {
     line-height: 30px !important;
 }
 
+.card-title.activator.grey-text.text-darken-4 {
+    font-size: 18px;
+}
+
 .parallax-container {
     max-height: 400px;
 }
@@ -306,8 +325,14 @@ footer.page-footer {
     margin-top: 0px !important;
 }
 
-#buyBtn {
-    margin-top: 20px;
+#footer {
+    height: 200px;
+}
+
+.waves-effect.waves-light.btn {
+    margin-top: 10px;
+    color: #fff;
+    background-color: #2196F3;
 }
 
 #products {

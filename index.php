@@ -22,15 +22,18 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#2196F3">
+    <meta name="theme-color" content="#2196F3">	
+	<!-- XSS-prevention, not allowed to load resources from other location -->
+	<meta http-equiv="Content-Security-Policy" Content-Security-Policy-Report-Only:default-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com *.code.jquery.com *.fonts.gstatic.com ;>
     <title>MMM - Mobile</title>
 
     <!-- CSS  -->
     <link href="css/style-main.css" type="text/css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
     <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   </head>
 
@@ -153,8 +156,8 @@ if (isset($_SESSION['name'])) {
 | 7490 kr</p>
 </span>
                   <p>
-                    <button class="waves-effect waves-light btn" value="iFone7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a>
-                    </button>
+                    <a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a>
+                    </p>
               </div>
               <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">iFone 7 <i class="mdi-navigation-close right"></i></span>
@@ -172,7 +175,7 @@ if (isset($_SESSION['name'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
 | 6990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="ZamZung7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="ZamZung7" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -192,7 +195,7 @@ if (isset($_SESSION['name'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
 | 4990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="GoogleX" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="GoogleX" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -211,7 +214,7 @@ if (isset($_SESSION['name'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
 | 7490 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="iFone7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -230,7 +233,7 @@ if (isset($_SESSION['name'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
 | 6990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="ZamZung7" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="ZamZung7" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -250,7 +253,7 @@ if (isset($_SESSION['name'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
 | 4990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="GoogleX" style="color:#fff; background-color:#2196F3" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="GoogleX" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -326,7 +329,7 @@ if (isset($_SESSION['name'])) {
       <div class="container">
         <!--                    Contact infor or w.e -->
         <div class="row">
-          <h2 class="header text_b" style="padding-top: 20px; padding-bottom:20px;"> Reviews </h2>
+          <h2 class="header text_b"> Reviews </h2>
           <ul class="collection">
             <?php
               include('/php/database.php');
@@ -348,8 +351,8 @@ if (isset($_SESSION['name'])) {
             ?>
           </ul>
 
-          <form class="col s12" id="info-form" method='post' name="info-form"  style="padding-bottom:30px;">
-            <h4 class="header text_b" style="padding-top: 20px; padding-bottom:20px;"> Add Review </h4>
+          <form class="col s12" id="info-form" method='post' name="info-form">
+            <h4 class="header text_b" id="info-header"> Add Review </h4>
             <div class="row">
               <div class="input-field col s6">
                 <input id="first_name" type="text" class="validate">
@@ -377,7 +380,7 @@ if (isset($_SESSION['name'])) {
 
     <!--Footer-->
     <footer id="contact" class="page-footer default_color scrollspy">
-      <div class="container" style="height: 200px;">
+      <div class="container" id="footer">
         <div class="row">
           <div class="col l6 s12">
             <!--                    Contact infor or w.e -->
