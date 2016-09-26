@@ -28,8 +28,7 @@
     -webkit-box-shadow: none !important;
 }
 
-.review,
-.full-width {
+.review {
     width: 100%;
     background: white;
     height: auto;
