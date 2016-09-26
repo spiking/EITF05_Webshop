@@ -13,6 +13,10 @@
 		//return strlen($pwd) > 7 && preg_match("#[0-9]+#", $pwd) && preg_match("#[a-z]+#", $pwd) && preg_match("#[A-Z]+#", $pwd);
 	}
 
+	function containsSpecialChar($input) {
+		return preg_match("#[^0-9A-Za-z_.-]#");
+	}
+
 	include('database.php');
 	session_start();
 	$name = $_POST['name'];
@@ -29,6 +33,11 @@
 			$response = [
                 'error' => true,
                 'msg' => 'The password must contain at least:</br>8 characters</br>A Number</br>A lower case</br>An upper case'
+            ];
+		} else if (containsSpecialChar($name) || containsSpecialChar($address)) {
+			$response = [
+                'error' => true,
+                'msg' => 'Special characters not allowed in name or address'
             ];
 		} else {
 			/*sanitize input*/
