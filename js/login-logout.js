@@ -1,10 +1,10 @@
 function checkPwdReq(pwd) {
-    var nbr = /[0-9]+/;
-    var special = /[\W]+/;
-    var lower = /[a-z]+/;
-    var upper = /[A-Z]+/;
-    return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
-    //return true;
+    // var nbr = /[0-9]+/;
+    // var special = /[\W]+/;
+    // var lower = /[a-z]+/;
+    // var upper = /[A-Z]+/;
+    // return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
+    return true;
 }
 
 function validateFormLogin() {
@@ -107,7 +107,7 @@ function postData(formType) {
         success: function(data) {
             if (data.error == true) {
                 console.log(data.msg);
-                
+
                 if (formType == "#login-form")
                     var errorType = "#login-error";
                 else if (formType == "#register-form")
