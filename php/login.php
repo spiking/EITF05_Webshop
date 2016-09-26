@@ -14,7 +14,7 @@
 	}
 
 	function containsSpecialChar($input) {
-		return preg_match("#[^0-9A-Za-z_.-]#");
+		return preg_match("#[^0-9A-Za-z_.-]#", $input);
 	}
 
 	include('database.php');
