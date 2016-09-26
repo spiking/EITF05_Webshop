@@ -24,7 +24,7 @@ $response = [];
 
 if (empty($_SESSION['cart'])) {
 	$response = [
-        'error' => true,            
+        'error' => true,
 		'msg' => 'Your cart is empty'
     ];
 	header('Content-Type: application/json');
@@ -34,7 +34,7 @@ if (empty($_SESSION['cart'])) {
 
 if (isset($name) && isset($password)) {
 	// Check if random CSRF token is correct, and 5 minutes timeout
-    if ($token == $_SESSION['token'] && $token_age < 300) {
+    if ($token == $_SESSION['token'] && $token_age < 300 && $_SESSION['name'] == $name) {
 
         if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [
@@ -45,7 +45,7 @@ if (isset($name) && isset($password)) {
             $sql = "SELECT * FROM users WHERE userName = ?";
             $results = $db -> executeQuery($sql, [$name]);
             $count = count($results);
-            
+
             if ($count == 1){
                 $stored_password_hash = $results[0]['password'];
                 if (password_verify($password, $stored_password_hash)){
@@ -76,7 +76,7 @@ if (isset($name) && isset($password)) {
             'msg' => 'CSRF token false'
         ];
 	}
-    
+
 } else {
     $response = [
     'error' => true,

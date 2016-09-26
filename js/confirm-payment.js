@@ -7,13 +7,14 @@ function validateForm() {
     var email = document.getElementById("email").value;
     var creditcard = document.getElementById("creditcard").value;
 
-    var usernameAndPwReg = /^[0-9a-zA-Z_.-]+$/;
+    var usernameReg = /^[0-9a-zA-Z_.-]+$/;
+    var pwReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
     var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var creditcardReg = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})/;
 
     // Credit card should be added, annoying for testing though
 
-    if (usernameAndPwReg.test(username) && usernameAndPwReg.test(password) && emailReg.test(email)) {
+    if (usernameReg.test(username) && pwReg.test(password) && emailReg.test(email)) {
         console.log("Input Valid");
         console.log("Check username and password");
 
