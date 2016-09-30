@@ -13,4 +13,5 @@ httpd.conf
 ```sh
 TraceRoute = Off
 Deny, Allow
+Set ServerToken = Prod
 ```
