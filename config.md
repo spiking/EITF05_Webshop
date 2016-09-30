@@ -13,3 +13,10 @@ httpd.conf
 TraceRoute = Off
 Deny, Allow
 ```
+
+# Breached Branch
+**Apache**
+httpd.conf
+```sh
+Header always set X-Xss-Protection: 0
+```
