@@ -11,4 +11,5 @@ session.cookie_httponly = 1 (XSS)
 httpd.conf
 ```sh
 TraceRoute = Off
+Deny, Allow
 ```
