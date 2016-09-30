@@ -121,7 +121,7 @@ $(document).ready(function () {
             url: '../php/update-cart.php'
             , type: 'POST'
             , data: {
-                "quantity_ZamZung7": amount
+                "quantity_ZamZung7": amount, "ID": document.cookie
             }
             , success: function (response) {
                 console.log(response);
@@ -139,7 +139,7 @@ $(document).ready(function () {
             url: '../php/update-cart.php'
             , type: 'POST'
             , data: {
-                "quantity_iFone7": amount
+                "quantity_iFone7": amount, "ID": document.cookie
             }
             , success: function (response) {
                 console.log(response);
@@ -159,7 +159,7 @@ $(document).ready(function () {
             url: '../php/update-cart.php'
             , type: 'POST'
             , data: {
-                "quantity_GoogleX": amount
+                "quantity_GoogleX": amount, "ID": document.cookie
             }
             , success: function (response) {
                 console.log(response);

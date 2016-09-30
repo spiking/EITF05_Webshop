@@ -15,11 +15,6 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
   }
 }
 
-// Generate token for CSRF prevention
-$token = sha1(uniqid(rand(), TRUE));
-$_SESSION['token'] = $token;
-$_SESSION['token_time'] = time();
-
 ?>
 
     <!DOCTYPE html>
