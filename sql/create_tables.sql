@@ -1,5 +1,7 @@
 SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS LoginAttempts;
+DROP TABLE IF EXISTS Reviews;
 SET foreign_key_checks = 1;
 
 /**Table creation*/
