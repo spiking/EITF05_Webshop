@@ -28,14 +28,18 @@
     -webkit-box-shadow: none !important;
 }
 
-.review,
-.full-width {
+.review {
     width: 100%;
     background: white;
     height: auto;
     min-height: 30px;
     height: auto !important;
     /* for IE as it does not support min-height */
+}
+
+#reviewTitle {
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 #review-btn {

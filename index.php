@@ -24,7 +24,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
 	<!-- XSS-prevention, not allowed to load resources from other location -->
-	<meta http-equiv="Content-Security-Policy" Content-Security-Policy-Report-Only:default-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com *.code.jquery.com *.fonts.gstatic.com ;>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' code.jquery.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;">
     <title>MMM - Mobile</title>
 
     <!-- CSS  -->
@@ -62,7 +62,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
               <?php
 
 if (isset($_SESSION['name'])) {
-    print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+    print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
     print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 } else {
     print '<li><a href="login.html">Login</a></li>';
@@ -79,7 +79,7 @@ if (isset($_SESSION['name'])) {
               <?php
 
 if (isset($_SESSION['name'])) {
-    print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+    print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
     print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 } else {
     print '<li><a href="login.html">Login</a></li>';
@@ -329,7 +329,7 @@ if (isset($_SESSION['name'])) {
       <div class="container">
         <!--                    Contact infor or w.e -->
         <div class="row">
-          <h2 class="header text_b"> Reviews </h2>
+          <h2 class="header text_b" id="reviewTitle"> Reviews </h2>
           <ul class="collection">
             <?php
               include('php/database.php');
