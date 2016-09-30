@@ -1,3 +1,4 @@
+// Add product to cart
 $(document).ready(function () {
     $(".waves-effect.waves-light.btn").on('click', function() {
         console.log("Called buy");

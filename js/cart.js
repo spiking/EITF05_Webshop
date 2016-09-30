@@ -1,3 +1,5 @@
+// Validate cart form
+
 function validateForm() {
 
     console.log("Validate User Input");
@@ -62,6 +64,7 @@ function validateForm() {
 }
 
 // Modern browsers got back-forward cache (BFCache) when user click back-button, reset form
+
 $(document).ready(function() {
     $(window).bind("pageshow", function() {
         var form = $('form');
@@ -69,3 +72,100 @@ $(document).ready(function() {
         form[0].reset();
     });
 });
+
+// Empty cart
+
+$(document).ready(function() {
+    $('#empty-btn').on('click', function() {
+        console.log('empty cart');
+        $('#cart-table').empty();
+        $('#cart-empty').empty();
+        $('#cart-empty-hidden').show();
+        $("td.total-price").empty();
+        $("td.total-price").append("0 SEK");
+
+        $.ajax({
+		type: 'POST',
+		url: '../php/empty-cart.php',
+		data: 'empty',
+		dataType: 'json',
+		success: function(data) {
+			if (data.error == true) {
+				console.log('Error');
+			} else {
+				console.log('Success');
+			}
+		},
+		complete: function() {
+			console.log('ajax call completed');
+		},
+		error: function(exception) {
+			console.log(exception);
+		}
+	});
+
+	return false;
+    });
+})
+
+// Update cart
+
+$(document).ready(function () {
+
+    $("#ZamZung7_amount").change(function () {
+        console.log("Called update");
+        var amount = $('#ZamZung7_amount').find(":selected").text();
+        console.log(amount);
+
+        $.ajax({
+            url: '../php/update-cart.php'
+            , type: 'POST'
+            , data: {
+                "quantity_ZamZung7": amount
+            }
+            , success: function (response) {
+                console.log(response);
+            }
+        });
+        window.location.reload();
+    });
+
+    $("#iFone_amount").change(function () {
+        console.log("Called update");
+        var amount = $('#iFone_amount').find(":selected").text();
+        console.log(amount);
+
+        $.ajax({
+            url: '../php/update-cart.php'
+            , type: 'POST'
+            , data: {
+                "quantity_iFone7": amount
+            }
+            , success: function (response) {
+                console.log(response);
+            }
+        });
+        window.location.reload();
+    });
+
+
+
+    $("#GoogleX_amount").change(function () {
+        console.log("Called update");
+        var amount = $('#GoogleX_amount').find(":selected").text();
+        console.log(amount);
+
+        $.ajax({
+            url: '../php/update-cart.php'
+            , type: 'POST'
+            , data: {
+                "quantity_GoogleX": amount
+            }
+            , success: function (response) {
+                console.log(response);
+            }
+        });
+        window.location.reload();
+    });
+
+})

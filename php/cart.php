@@ -311,9 +311,7 @@ $_SESSION['token_time'] = time();
 
         <!--   Script Files -->
         <script src="../js/materialize-min.js"></script>
-        <script src="../js/empty-cart.js"></script>
-        <script src="../js/confirm-payment.js"></script>
-        <script src="../js/update-cart.js"></script>
+        <script src="../js/cart.js"></script>
         <script src="../js/main-min.js"></script>
 
     </body>

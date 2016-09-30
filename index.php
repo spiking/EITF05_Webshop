@@ -351,7 +351,7 @@ if (isset($_SESSION['name'])) {
             ?>
           </ul>
 
-          <form action="php/updateReview.php" class="col s12" id="info-form" method='post' name="info-form">
+          <form action="php/update-review.php" class="col s12" id="info-form" method='post' name="info-form">
             <h4 class="header text_b" id="info-header"> Add Review </h4>
             <div class="row">
               <div class="input-field col s12">
@@ -384,7 +384,8 @@ if (isset($_SESSION['name'])) {
 
     <!--   Script Files -->
     <script src="js/materialize-min.js"></script>
-    <script src="js/add-to-cart.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/index.js"></script>
     <script src="js/main-min.js"></script>
 
   </body>
