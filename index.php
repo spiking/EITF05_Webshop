@@ -37,6 +37,7 @@ print '<h6>Token = ' . $_SESSION['token'] . '</h6>';
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' code.jquery.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;" />
     <!-- XSS-prevention, not allowed to load resources from other location -->
     <title>MMM - Mobile</title>
 
