@@ -33,8 +33,8 @@ if (empty($_SESSION['cart'])) {
 }
 
 if (isset($name) && isset($password)) {
-	// Check if random CSRF token is correct, and 60 minutes timeout
-    if ($token == $_SESSION['token'] && $token_age < 3600 && $_SESSION['name'] == $name) {
+	// Check if random CSRF token is correct, and 5 minutes timeout
+    if ($token == $_SESSION['token'] && $token_age < 300 && $_SESSION['name'] == $name) {
 
         if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [
