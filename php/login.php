@@ -5,6 +5,11 @@
 		$_SESSION['name'] = $name;
 		$_SESSION['address'] = $address;
         $_SESSION['ID'] = session_regenerate_id();
+		// Generate token for CSRF prevention
+		$token = sha1(uniqid(rand(), TRUE));
+		$_SESSION['token'] = $token;
+		$_SESSION['token_time'] = time();
+		setcookie('token', $token, time() + (3600), "/", "", 1);
 //		header("location: ../index.php");
 	}
 
