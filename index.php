@@ -7,6 +7,8 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
+print '<h6>ID = ' . session_id() . '</h6>';
+
 // Empty cart if payment completed
 if(isset($_SESSION['PAYMENT_COMPLETED'])){
     if (($_SESSION['PAYMENT_COMPLETED'] == true)) {
@@ -23,13 +25,12 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
-	<!-- XSS-prevention, not allowed to load resources from other location -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' code.jquery.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;">
+    <!-- XSS-prevention, not allowed to load resources from other location -->
     <title>MMM - Mobile</title>
 
     <!-- CSS  -->
     <link href="css/style-main.css" type="text/css" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <!--Import materialize.css-->
 
     <!--Import Google Icon Font-->
@@ -157,7 +158,7 @@ if (isset($_SESSION['name'])) {
 </span>
                   <p>
                     <a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a>
-                    </p>
+                  </p>
               </div>
               <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">iFone 7 <i class="mdi-navigation-close right"></i></span>
@@ -332,30 +333,30 @@ if (isset($_SESSION['name'])) {
           <h2 class="header text_b" id="reviewTitle"> Reviews </h2>
           <ul class="collection">
             <?php
-              include('php/database.php');
-              $db = new Database();
-              $sql = "SELECT * FROM reviews ORDER BY id DESC";
-              $result = $db -> executeQuery($sql, NULL);
+include('php/database.php');
+$db = new Database();
+$sql = "SELECT * FROM reviews ORDER BY id DESC";
+$result = $db -> executeQuery($sql, NULL);
 
-              for ($x = 0; $x < count($result); $x++){
-                $row = $result[$x];
-                print '<li class="collection-item avatar">';
-                print '<img src="img/batman.png" alt="" class="circle">';
-                print '<span class="title">' . $row['user'] . '</span>';
-                print '<p>';
-                print $row['review'];
-                print '</p>';
-                print '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>';
-                print '</li>';
-              }
-            ?>
+for ($x = 0; $x < count($result); $x++){
+    $row = $result[$x];
+    print '<li class="collection-item avatar">';
+    print '<img src="img/batman.png" alt="" class="circle">';
+    print '<span class="title">' . $row['user'] . '</span>';
+    print '<p>';
+    print $row['review'];
+    print '</p>';
+    print '<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>';
+    print '</li>';
+}
+?>
           </ul>
 
           <form action="php/updateReview.php" class="col s12" id="info-form" method='post' name="info-form">
             <h4 class="header text_b" id="info-header"> Add Review </h4>
             <div class="row">
               <div class="input-field col s12">
-                <input id="review" name="review" type="text" class="validate">
+                <input id="review" name="review" type="text">
                 <label for="review">Review</label>
               </div>
             </div>

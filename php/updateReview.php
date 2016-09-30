@@ -7,7 +7,7 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
-$review = htmlspecialchars($_POST['review']);
+$review = $_POST['review'];
 $name = $_SESSION['name'];
 
 $db = new Database();
