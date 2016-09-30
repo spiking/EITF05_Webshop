@@ -102,7 +102,5 @@ class Database {
 		return $this->executeUpdate($sql, [$ip]);
 	}
 
-
-
 }
 ?>

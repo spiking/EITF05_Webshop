@@ -341,7 +341,7 @@ if (isset($_SESSION['name'])) {
                 $row = $result[$x];
                 print '<li class="collection-item avatar">';
                 print '<img src="img/batman.png" alt="" class="circle">';
-                print '<span class="title">' . $row['firstName'] . ' ' . $row['lastName'] . '</span>';
+                print '<span class="title">' . $row['user'] . '</span>';
                 print '<p>';
                 print $row['review'];
                 print '</p>';
@@ -351,21 +351,11 @@ if (isset($_SESSION['name'])) {
             ?>
           </ul>
 
-          <form class="col s12" id="info-form" method='post' name="info-form">
+          <form action="php/updateReview.php" class="col s12" id="info-form" method='post' name="info-form">
             <h4 class="header text_b" id="info-header"> Add Review </h4>
             <div class="row">
-              <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-              </div>
-            </div>
-            <div class="row">
               <div class="input-field col s12">
-                <input id="review" type="text" class="validate">
+                <input id="review" name="review" type="text" class="validate">
                 <label for="review">Review</label>
               </div>
             </div>

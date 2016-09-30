@@ -20,8 +20,7 @@ CREATE TABLE LoginAttempts(
 
 CREATE TABLE Reviews(
 	id int AUTO_INCREMENT,
-	firstName varchar(20) NOT NULL,
-	lastName varchar(20) NOT NULL,
+	user varchar(20) NOT NULL,
 	review varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
