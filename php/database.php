@@ -27,6 +27,13 @@ class Database {
 		return $this->conn;
 	}
 
+	public function unsafeQuery($sql) {
+		$conn =  new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
+		$result = mysqli_query($conn, $sql);
+
+		return $result->fetch_array(MYSQLI_ASSOC);
+	}
+
 	public function executeQuery($query, $param) {
 		$result = false;
 		try {

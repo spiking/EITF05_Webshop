@@ -17,16 +17,8 @@ function validateFormLogin() {
     var password = document.getElementById("password").value;
     console.log(password);
 
-    var usernameReg= /^[0-9a-zA-Z_.-]+$/;
 
     var msg = "";
-
-    if (usernameReg.test(username)) {
-        console.log("Input username Valid");
-
-    } else {
-        msg = 'Invalid characters in username';
-    }
 
     if (checkPwdReq(password)) {
         console.log("Input password Valid");

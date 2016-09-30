@@ -60,8 +60,8 @@
 		    ];
 //			print "Try again in 30 minutes from your last try";
 		} else {
-			$sql = "SELECT * FROM users WHERE userName = ?";
-			$results = $db -> executeQuery($sql, [$name]);
+			$sql = "SELECT * FROM users WHERE userName = '" . $name . "'";
+			$results = $db -> executeQuery($sql, NULL);
 			$count = count($results);
 
 			if ($count == 1){
