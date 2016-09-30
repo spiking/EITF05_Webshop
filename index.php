@@ -62,7 +62,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
               <?php
 
 if (isset($_SESSION['name'])) {
-    print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+    print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
     print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 } else {
     print '<li><a href="login.html">Login</a></li>';
@@ -79,7 +79,7 @@ if (isset($_SESSION['name'])) {
               <?php
 
 if (isset($_SESSION['name'])) {
-    print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+    print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
     print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
 } else {
     print '<li><a href="login.html">Login</a></li>';
