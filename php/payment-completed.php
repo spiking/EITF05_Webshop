@@ -7,7 +7,7 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
-$_SESSION['PAYMENT_COMPLETED'] = true; 
+$_SESSION['PAYMENT_COMPLETED'] = true;
 
 ?>
 
@@ -46,8 +46,8 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                             <li><a href="#">Products</a></li>
                             <li><a href="#">Team</a></li>
                             <li><a href="cart.php">Cart</a></li>
-                            <?php 
-							
+                            <?php
+
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
@@ -55,7 +55,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
 								print '<li><a href="../login.html">Login</a></li>';
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
-	
+
                             ?>
                         </ul>
                         <ul id="nav-mobile" class="side-nav">
@@ -63,8 +63,8 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                             <li><a href="#">Products</a></li>
                             <li><a href="#">Team</a></li>
                             <li><a href="cart.php">Cart</a></li>
-                            <?php 
-							
+                            <?php
+
 							if (isset($_SESSION['name'])) {
 								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
 								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
@@ -72,7 +72,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
 								print '<li><a href="../login.html">Login</a></li>';
 							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
 							}
-	
+
                             ?>
                         </ul>
                         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -89,7 +89,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
             <span class="cd-words-wrapper waiting">
                 <b class="is-visible">Thank You!</b>
                 <b>See You Soon!</b>
-            </span>   
+            </span>
         </h1>
             </div>
         </div>
@@ -136,7 +136,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
 					} else {
 						print '<h5 id="cart-empty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
 					}
-                    
+
                         print '<h5 id="cart-empty-hidden" style="color:grey; font-size:18px; margin-top:20px; display:none">Empty</h5>';
                         print '<tbody>';
                             print '<tr>';
@@ -149,7 +149,7 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                                     print '<td>' . $iFone7Count . ' </td>';
                                 print '</tr>';
                             }
-                
+
                             if (isset($zamZung7Count) && $zamZung7Count > 0) {
                                 print '<tr>';
                                     print ' <td><img src="../img/product_2.jpg" alt="" border=3 height=100 width=100></img>
@@ -232,7 +232,6 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
             <div class="parallax-container valign-wrapper">
                 <div class="parallax"><img src="../img/flat_parallax.png" alt="Unsplashed background img 3"></div>
             </div>
-
 
             <!--jQuery-->
             <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

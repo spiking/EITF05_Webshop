@@ -7,6 +7,7 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
+// Validate input
 $review = htmlspecialchars($_POST['review']);
 $name = $_SESSION['name'];
 

@@ -1,29 +1,12 @@
-function checkPwdReq(pwd) {
-    // var nbr = /[0-9]+/;
-    // var special = /[\W]+/;
-    // var lower = /[a-z]+/;
-    // var upper = /[A-Z]+/;
-    // return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
-    return true;
-}
-
 function validateFormLogin() {
 
-    console.log("Validate User Input");
-
     var username = document.getElementById("name").value;
-    console.log(username);
-
     var password = document.getElementById("password").value;
-    console.log(password);
-
     var usernameReg= /^[0-9a-zA-Z_.-]+$/;
-
     var msg = "";
 
     if (usernameReg.test(username)) {
         console.log("Input username Valid");
-
     } else {
         msg = 'Invalid characters in username';
     }
@@ -38,8 +21,6 @@ function validateFormLogin() {
         postData('#login-form');
     } else {
         $('#login-error').html(msg);
-        console.log(msg);
-
         $('#login-error').fadeIn(500);
         $('#login-error').fadeOut(3000);
         $('#login-error').fadeOut(500);
@@ -98,6 +79,17 @@ function validateFormReg() {
     return false;
 }
 
+function checkPwdReq(pwd) {
+    // var nbr = /[0-9]+/;
+    // var special = /[\W]+/;
+    // var lower = /[a-z]+/;
+    // var upper = /[A-Z]+/;
+    // return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
+    return true;
+}
+
+// Login/register user
+
 function postData(formType) {
     $.ajax({
         type: 'POST',
@@ -135,6 +127,28 @@ function postData(formType) {
     return false;
 }
 
+// Change form
+
+function toggleForm(type) {
+    if (type == "register") {
+        document.getElementById('register-form').style.display = "block";
+        document.getElementById('login-form').style.display = "none";
+    } else {
+        document.getElementById('register-form').style.display = "none";
+        document.getElementById('login-form').style.display = "block";
+    }
+}
+
+// Modern browsers got back-forward cache (BFCache) when user click back-button, reset all forms
+
+$(document).ready(function() {
+    $(window).bind("pageshow", function() {
+        $('form').each(function() { this.reset() });
+    });
+});
+
+// Ripple effect on button
+
 $(window, document, undefined).ready(function() {
 
     $('input').blur(function() {
@@ -169,24 +183,4 @@ $(window, document, undefined).ready(function() {
         $(this).removeClass('is-active');
     });
 
-});
-
-function toggleForm(type) {
-
-    console.log(type)
-
-    if (type == "register") {
-        document.getElementById('register-form').style.display = "block";
-        document.getElementById('login-form').style.display = "none";
-    } else {
-        document.getElementById('register-form').style.display = "none";
-        document.getElementById('login-form').style.display = "block";
-    }
-}
-
-// Modern browsers got back-forward cache (BFCache) when user click back-button, reset all forms
-$(document).ready(function() {
-    $(window).bind("pageshow", function() {
-        $('form').each(function() { this.reset() });
-    });
 });

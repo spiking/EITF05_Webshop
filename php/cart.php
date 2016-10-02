@@ -58,13 +58,12 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                             <li><a href="cart.php">Cart</a></li>
                             <?php
 
-							if (isset($_SESSION['name'])) {
-								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
-								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							} else {
-								print '<li><a href="../login.html">Login</a></li>';
-							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							}
+              							if (isset($_SESSION['name'])) {
+              								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+              								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+              							} else {
+              								print '<li><a href="../login.html">Login</a></li>';
+              							}
 
                             ?>
                         </ul>
@@ -75,13 +74,12 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                             <li><a href="cart.php">Cart</a></li>
                             <?php
 
-							if (isset($_SESSION['name'])) {
-								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
-								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							} else {
-								print '<li><a href="../login.html">Login</a></li>';
-							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							}
+              							if (isset($_SESSION['name'])) {
+              								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+              								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+              							} else {
+              								print '<li><a href="../login.html">Login</a></li>';
+              							}
 
                             ?>
                         </ul>
@@ -91,9 +89,6 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
             </nav>
         </div>
 
-        <header>
-        </header>
-
         <div>
             <div class="container">
                 <div class="wrapper">
@@ -101,37 +96,37 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
 
                     <?php
 
-                    if(isset($_SESSION['cart']['iFone7'])){
-							$iFone7Name = $_SESSION['cart']['iFone7']['product'];
-							$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
-							$iFone7Price = $_SESSION['cart']['iFone7']['price'];
-						  }
+                        if(isset($_SESSION['cart']['iFone7'])){
+            							$iFone7Name = $_SESSION['cart']['iFone7']['product'];
+            							$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
+            							$iFone7Price = $_SESSION['cart']['iFone7']['price'];
+          						  }
 
-						  if(isset($_SESSION['cart']['ZamZung7'])){
-							 $zamZung7Name = $_SESSION['cart']['ZamZung7']['product'];
-							 $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
-							 $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
-						  }
+          						  if(isset($_SESSION['cart']['ZamZung7'])){
+            							 $zamZung7Name = $_SESSION['cart']['ZamZung7']['product'];
+            							 $zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
+            							 $zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+          						  }
 
-				          if(isset($_SESSION['cart']['GoogleX']['product'])){
-							 $googleXName = $_SESSION['cart']['GoogleX']['product'];
-							 $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
-							 $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
-						  }
+          				      if(isset($_SESSION['cart']['GoogleX']['product'])){
+            							 $googleXName = $_SESSION['cart']['GoogleX']['product'];
+            							 $googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
+            							 $googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+          						  }
 
-					if (!empty($_SESSION['cart'])) {
-						print '<table id="cart-table">';
-						    print '<thead>';
-                            	print '<tr>';
-						        print '<th data-field="img">Product</th>';
-                                print '<th data-field="productName">Name</th>';
-                                print '<th data-field="price">Price</th>';
-                                print '<th data-field="amount">Amount</th>';
-                            print '</tr>';
-						 print '</thead>';
-					} else {
-						print '<h5 id="cart-empty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
-					}
+          					if (!empty($_SESSION['cart'])) {
+          						print '<table id="cart-table">';
+          						    print '<thead>';
+                                      	print '<tr>';
+          						        print '<th data-field="img">Product</th>';
+                                          print '<th data-field="productName">Name</th>';
+                                          print '<th data-field="price">Price</th>';
+                                          print '<th data-field="amount">Amount</th>';
+                                      print '</tr>';
+          						 print '</thead>';
+          					} else {
+          						print '<h5 id="cart-empty" style="color:grey; font-size:18px; margin-top:20px;">Empty</h5>';
+          					}
 
                         print '<h5 id="cart-empty-hidden" style="color:grey; font-size:18px; margin-top:20px; display:none">Empty</h5>';
                         print '<tbody>';
@@ -203,20 +198,20 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                                 <tr>
                                     <?php
 
-										if(isset($_SESSION['cart']['iFone7'])){
-											$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
-											$iFone7Price = $_SESSION['cart']['iFone7']['price'];
-										}
+                    										if(isset($_SESSION['cart']['iFone7'])){
+                    											$iFone7Count = $_SESSION['cart']['iFone7']['quantity'];
+                    											$iFone7Price = $_SESSION['cart']['iFone7']['price'];
+                    										}
 
-										if(isset($_SESSION['cart']['ZamZung7'])){
-											$zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
-											$zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
-										}
+                    										if(isset($_SESSION['cart']['ZamZung7'])){
+                    											$zamZung7Count = $_SESSION['cart']['ZamZung7']['quantity'];
+                    											$zamZung7Price = $_SESSION['cart']['ZamZung7']['price'];
+                    										}
 
-										if(isset($_SESSION['cart']['GoogleX']['product'])){
-											$googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
-											$googleXPrice= $_SESSION['cart']['GoogleX']['price'];
-										}
+                    										if(isset($_SESSION['cart']['GoogleX']['product'])){
+                    											$googleXCount = $_SESSION['cart']['GoogleX']['quantity'];
+                    											$googleXPrice= $_SESSION['cart']['GoogleX']['price'];
+                    										}
 
                                         $total = 0;
 
@@ -239,7 +234,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                             </tbody>
                         </table>
                 </div>
-                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn" onclick="checkForm()">Empty Cart</button>
+                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn">Empty Cart</button>
             </div>
         </div>
 
@@ -277,7 +272,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                         </div>
                     </div>
 
-                    <input hidden="true" name="token" value="<?php echo $token; ?>" />
+                    <input hidden="true" name="token" value=document.cookie />
 
                     <div class="alert" id="confirm-error" style="display:none"></div>
                     <button class="waves-effect waves-light btn-large green" type="submit" name="submit" value="submit" id="confirm-btn" onclick="validateForm()">Confirm Payment</button>
@@ -306,7 +301,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
 
         <!--   Script Files -->
         <script src="../js/materialize-min.js"></script>
-        <script src="../js/cart.js"></script>
+        <script src="../js/cart-handler.js"></script>
         <script src="../js/main-min.js"></script>
 
     </body>

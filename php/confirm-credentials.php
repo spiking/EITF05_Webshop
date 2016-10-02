@@ -16,8 +16,7 @@ if (!isset($_SESSION['ID'])) {
 $name = $_POST['name'];
 $password = $_POST['password'];
 
-$token_age = time() - $_SESSION['token_time'];
-$token = $_POST['token'];
+$ID = $_POST['token'];
 
 $db = new Database();
 $response = [];
@@ -33,8 +32,8 @@ if (empty($_SESSION['cart'])) {
 }
 
 if (isset($name) && isset($password)) {
-	// Check if random CSRF token is correct, and 5 minutes timeout
-    if ($token == $_SESSION['token'] && $token_age < 300 && $_SESSION['name'] == $name) {
+	  // Check if ID matches
+    if ($ID == $_SESSION['ID'] && $_SESSION['name'] == $name) {
 
         if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [
@@ -86,4 +85,5 @@ if (isset($name) && isset($password)) {
 
 header('Content-Type: application/json');
 echo json_encode($response);
+
 ?>

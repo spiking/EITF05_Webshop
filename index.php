@@ -15,13 +15,6 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
     }
 }
 
-
-if (!isset($_SESSION['token'])) {
-  $token = sha1(uniqid(rand(), TRUE));
-  $_SESSION['token'] = $token;
-  $_SESSION['token_time'] = time();
-}
-
 ?>
   <!DOCTYPE html>
   <html>
@@ -68,15 +61,15 @@ if (!isset($_SESSION['token'])) {
               <li><a href="php/cart.php">Cart</a></li>
               <?php
 
-if (isset($_SESSION['name'])) {
-    print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
-    print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
-} else {
-    print '<li><a href="login.html">Login</a></li>';
-    //	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
-}
+              if (isset($_SESSION['name'])) {
+                  print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
+                  print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
+              } else {
+                  print '<li><a href="login.html">Login</a></li>';
+                  //	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
+              }
 
-?>
+              ?>
             </ul>
             <ul id="nav-mobile" class="side-nav">
               <li><a href="index.php">Home</a></li>
@@ -85,15 +78,15 @@ if (isset($_SESSION['name'])) {
               <li><a href="php/cart.php">Cart</a></li>
               <?php
 
-if (isset($_SESSION['name'])) {
-    print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
-    print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
-} else {
-    print '<li><a href="login.html">Login</a></li>';
-    //	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
-}
+              if (isset($_SESSION['name'])) {
+                  print '<li><a href="#">' . htmlspecialchars($_SESSION['name']) . '</a></li>';
+                  print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
+              } else {
+                  print '<li><a href="login.html">Login</a></li>';
+                  //	print '<li><a href="php/logout.php" onclick="logoutUser()">Log Out</a></li>';
+              }
 
-?>
+              ?>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
           </div>
@@ -105,13 +98,13 @@ if (isset($_SESSION['name'])) {
     <div class="section no-pad-bot" id="index-banner">
       <div class="container">
         <h1 class="text_h center header cd-headline letters type">
-<span>Magical Mobile Market: </span>
-<span class="cd-words-wrapper waiting">
-<b class="is-visible">Speed</b>
-<b>Simplicity</b>
-<b>Elegance</b>
-</span>
-</h1>
+          <span>Magical Mobile Market: </span>
+            <span class="cd-words-wrapper waiting">
+            <b class="is-visible">Speed</b>
+            <b>Simplicity</b>
+            <b>Elegance</b>
+            </span>
+          </h1>
       </div>
     </div>
 
@@ -334,7 +327,6 @@ if (isset($_SESSION['name'])) {
 
     <div class="review">
       <div class="container">
-        <!--                    Contact infor or w.e -->
         <div class="row">
           <h2 class="header text_b" id="reviewTitle"> Reviews </h2>
           <ul class="collection">
@@ -391,8 +383,7 @@ if (isset($_SESSION['name'])) {
 
     <!--   Script Files -->
     <script src="js/materialize-min.js"></script>
-    <script src="../js/cart.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/cart-handler.js"></script>
     <script src="js/main-min.js"></script>
 
   </body>
