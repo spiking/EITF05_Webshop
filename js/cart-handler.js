@@ -7,7 +7,8 @@ $(document).ready(function () {
             url: '../php/cart-handler.php'
             , type: 'POST'
             , data: {
-                "productType": product
+                "productType": product,
+                "ID": document.cookie
             }
             , success: function (response) {
                 console.log(response);
@@ -35,6 +36,7 @@ $(document).ready(function() {
             url: '../php/cart-handler.php',
             data: {
                 "empty": "empty",
+                "ID": document.cookie
             },
             dataType: 'json',
             success: function(data) {

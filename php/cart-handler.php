@@ -25,7 +25,9 @@ session_start();
     }
 
     if (isset($_POST['productType'])) {
-        addToCart($_POST['productType']);
+        if (isset($_POST['ID']) == $_SESSION['ID']) {
+            addToCart($_POST['productType']);
+        }
     }
 
     // Empty cart
@@ -35,7 +37,9 @@ session_start();
     }
 
     if (isset($_POST['empty'])) {
-        emptyCart();
+        if (isset($_POST['ID']) == $_SESSION['ID']) {
+          emptyCart();
+         }
     }
 
     // Update cart
