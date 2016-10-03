@@ -4,7 +4,7 @@
 		session_regenerate_id();
 		$_SESSION['name'] = $name;
 		$_SESSION['address'] = $address;
-        $_SESSION['ID'] = session_regenerate_id();
+    $_SESSION['ID'] = session_regenerate_id();
 //		header("location: ../index.php");
 	}
 

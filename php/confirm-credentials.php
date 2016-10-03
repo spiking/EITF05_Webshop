@@ -16,7 +16,8 @@ if (!isset($_SESSION['ID'])) {
 $name = $_POST['name'];
 $password = $_POST['password'];
 
-$ID = $_POST['token'];
+// $token_age = time() - $_SESSION['token_time'];
+// $token = $_POST['token'];
 
 $db = new Database();
 $response = [];
@@ -32,8 +33,10 @@ if (empty($_SESSION['cart'])) {
 }
 
 if (isset($name) && isset($password)) {
-	  // Check if ID matches
-    if ($ID == $_SESSION['ID'] && $_SESSION['name'] == $name) {
+
+    // $token == $_SESSION['token'] && $token_age < 300
+
+    if ($_SESSION['name'] == $name) {
 
         if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [

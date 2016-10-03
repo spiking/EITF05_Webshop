@@ -15,6 +15,15 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
     }
 }
 
+// if (!isset($_SESSION['token'])) {
+//     $token = sha1(uniqid(rand(), TRUE));
+//     $_SESSION['token'] = $token;
+//     $_SESSION['token_time'] = time();
+//  }
+//
+//  echo $_SESSION['token'];
+
+
 ?>
   <!DOCTYPE html>
   <html>
