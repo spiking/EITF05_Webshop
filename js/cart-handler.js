@@ -66,12 +66,13 @@ $(document).ready(function() {
 
     $("#ZamZung7_amount").change(function() {
         var amount = $('#ZamZung7_amount').find(":selected").text();
+	var token = document.getElementById("ZamZung7_amount").getAttribute("data-token");
         $.ajax({
             url: '../php/cart-handler.php',
             type: 'POST',
             data: {
                 "quantity_ZamZung7": amount,
-                "ID": document.cookie
+                "ID": token
             },
             success: function(response) {
                 console.log(response);
@@ -82,12 +83,13 @@ $(document).ready(function() {
 
     $("#iFone_amount").change(function() {
         var amount = $('#iFone_amount').find(":selected").text();
+	var token = document.getElementById("iFone_amount").getAttribute("data-token");
         $.ajax({
             url: '../php/cart-handler.php',
             type: 'POST',
             data: {
                 "quantity_iFone7": amount,
-                "ID": document.cookie
+                "ID": token
             },
             success: function(response) {
                 console.log(response);
@@ -98,12 +100,13 @@ $(document).ready(function() {
 
     $("#GoogleX_amount").change(function() {
         var amount = $('#GoogleX_amount').find(":selected").text();
+	var token = document.getElementById("GoogleX_amount").getAttribute("data-token");
         $.ajax({
             url: '../php/cart-handler.php',
             type: 'POST',
             data: {
                 "quantity_GoogleX": amount,
-                "ID": document.cookie
+                "ID": token
             },
             success: function(response) {
                 console.log(response);

@@ -139,6 +139,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                         print '<h5 id="cart-empty-hidden" style="color:grey; font-size:18px; margin-top:20px; display:none">Empty</h5>';
                         print '<tbody>';
                             print '<tr>';
+			    $data_token = session_id();
                             if (isset($iFone7Count) && $iFone7Count > 0) {
                                 print '<tr>';
                                     print '<td><img src="../img/product_1.jpg" alt="" border=3 height=100 width=100></img>
@@ -146,7 +147,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                                     print '<td>' . $iFone7Name . '</td>';
                                     print '<td>' . $iFone7Price . ' SEK</td>';
                                     print '<td>';
-                                        print '<select class="browser-default" name="iFone_amount" id="iFone_amount">';
+                                        print '<select class="browser-default" name="iFone_amount" id="iFone_amount" data-token=' . $data_token . '>';
                                         print '<option value="" disabled selected>' . $iFone7Count . '</option>';
                                         for ($x = 0; $x <= 100; $x++) {
                                                 print '<option value=' . $x . '>' . $x . '</option>';
@@ -163,7 +164,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                                     print '<td>' . $zamZung7Name . '</td>';
                                     print '<td>' . $zamZung7Price . ' SEK</td>';
                                     print '<td>';
-                                        print '<select class="browser-default" name="ZamZung7_amount" id="ZamZung7_amount">';
+                                        print '<select class="browser-default" name="ZamZung7_amount" id="ZamZung7_amount" data-token=' . $data_token . '>';
                                         print '<option value="" disabled selected>' . $zamZung7Count . '</option>';
                                         for ($x = 0; $x <= 100; $x++) {
                                                print '<option value=' . $x . '>' . $x . '</option>';
@@ -180,7 +181,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                                     print '<td>' . $googleXName . '</td>';
                                     print '<td>' . $googleXPrice. ' SEK</td>';
                                     print '<td>';
-                                        print '<select class="browser-default" name="GoogleX_amount" id="GoogleX_amount">';
+                                        print '<select class="browser-default" name="GoogleX_amount" id="GoogleX_amount" data-token=' . $data_token . '>';
                                         print '<option value="" disabled selected>' . $googleXCount . '</option>';
                                         for ($x = 0; $x <= 100; $x++) {
                                                 print '<option value=' . $x . '>' . $x . '</option>';

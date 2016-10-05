@@ -57,19 +57,19 @@ session_start();
     }
 
     if (isset($_POST['quantity_iFone7'])) {
-      if (isset($_POST['ID']) == session_id()) {
+      if (isset($_POST['ID']) && $_POST['ID'] === session_id()) {
          updateCartiFone7($_POST['quantity_iFone7']);
       }
     }
 
     if (isset($_POST['quantity_ZamZung7'])) {
-      if (isset($_POST['ID']) == session_id()) {
+      if (isset($_POST['ID']) && $_POST['ID'] === session_id()) {
          updateCartZamZung7($_POST['quantity_ZamZung7']);
       }
     }
 
     if (isset($_POST['quantity_GoogleX'])) {
-      if (isset($_POST['ID']) == session_id()) {
+      if (isset($_POST['ID']) && $_POST['ID'] === session_id()) {
          updateCartGoogleX($_POST['quantity_GoogleX']);
       }
     }
