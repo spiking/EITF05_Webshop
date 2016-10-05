@@ -2,8 +2,10 @@ function validateFormLogin() {
 
     var username = document.getElementById("name").value;
     var password = document.getElementById("password").value;
-    var usernameReg= /^[0-9a-zA-Z_.-]+$/;
+    var usernameReg = /^[0-9a-zA-Z_.-]+$/;
     var msg = "";
+
+    var password = document.getElementById("password").value;
 
     if (usernameReg.test(username)) {
         console.log("Input username Valid");
@@ -22,7 +24,7 @@ function validateFormLogin() {
     } else {
         $('#login-error').html(msg);
         $('#login-error').fadeIn(500);
-        $('#login-error').fadeOut(3000);
+        $('#login-error').delay(3000);
         $('#login-error').fadeOut(500);
     }
     return false;
@@ -72,7 +74,7 @@ function validateFormReg() {
         console.log("Invalid input reg form");
 
         $('#register-error').fadeIn(500);
-        $('#register-error').fadeOut(3000);
+        $('#register-error').delay(3000);
         $('#register-error').fadeOut(500);
     }
 
@@ -94,7 +96,7 @@ function postData(formType) {
     $.ajax({
         type: 'POST',
         url: '../php/login.php',
-        data: $(formType).serialize(),
+        data: $(formType).serialize() + "&g-recaptcha-response=" + grecaptcha.getResponse(),
         dataType: 'json',
         success: function(data) {
             if (data.error == true) {
@@ -105,9 +107,14 @@ function postData(formType) {
                 else if (formType == "#register-form")
                     var errorType = "#register-error";
 
+                if (data.msg == "Incorrect Credentials") {
+                  grecaptcha.reset();
+                }
+
                 $(errorType).html(data.msg);
-                $(errorType).fadeIn(1000);
-                $(errorType).fadeOut(3000);
+                $(errorType).fadeIn(500);
+                $(errorType).delay(3000);
+                $(errorType).fadeOut(500);
 
             } else {
                 console.log('Correct credentials.');
@@ -143,7 +150,9 @@ function toggleForm(type) {
 
 $(document).ready(function() {
     $(window).bind("pageshow", function() {
-        $('form').each(function() { this.reset() });
+        $('form').each(function() {
+            this.reset()
+        });
     });
 });
 

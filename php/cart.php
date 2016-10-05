@@ -139,7 +139,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                         print '<h5 id="cart-empty-hidden" style="color:grey; font-size:18px; margin-top:20px; display:none">Empty</h5>';
                         print '<tbody>';
                             print '<tr>';
-			    $data_token = session_id();
+			                          $data_token = session_id();
                             if (isset($iFone7Count) && $iFone7Count > 0) {
                                 print '<tr>';
                                     print '<td><img src="../img/product_1.jpg" alt="" border=3 height=100 width=100></img>

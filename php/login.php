@@ -21,8 +21,40 @@
 		$address = $_POST['address'];
 	}
 	$db = new Database();
+	$response = [];
 
-    $response = [];
+// Check captcha
+
+	$captcha = "";
+	if (isset($_POST["g-recaptcha-response"])) {
+			$captcha = $_POST["g-recaptcha-response"];
+	}
+
+	if (!$captcha) {
+		$response = [
+				'error' => true,
+				'msg' => 'Are you a robot?'
+			];
+	}
+
+	 $secret_key = "6LdzbwgUAAAAAA6FZCC_YtwgIIBd5MlMLnwcx9Vp";
+	 $captchaCheck = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret_key."&response=".$captcha."&remoteip=".$_SERVER["REMOTE_ADDR"]), true);
+
+	if ($captchaCheck["success"] != false) {
+		$captchaCheck = [
+				'error' => false,
+				'msg' => 'reCAPTCHA - OK'
+			];
+	} else {
+		$captchaCheck = [
+				'error' => true,
+				'msg' => 'Are you a robot?'
+			];
+
+			header('Content-Type: application/json');
+			echo json_encode($captchaCheck);
+			exit();
+	}
 
 	if (isset($name) && isset($address) && isset($password)) {
 		if (!checkPwdReq($password)) {
@@ -58,7 +90,6 @@
                 'error' => true,
                 'msg' => 'Try again in 30 minutes'
 		    ];
-//			print "Try again in 30 minutes from your last try";
 		} else {
 			$sql = "SELECT * FROM users WHERE userName = ?";
 			$results = $db -> executeQuery($sql, [$name]);
@@ -74,7 +105,6 @@
                         'error' => false,
                         'msg' => 'Succesfull login'
                     ];
-//					header("location: ../index.php");
 				} else {
 					//log ip and increment number of failed attempts
 					$db->addLogInAttempt($_SERVER['REMOTE_ADDR']);
@@ -82,7 +112,6 @@
                         'error' => true,
                         'msg' => 'Incorrect Credentials'
 		            ];
-//					print "Wrong username and/or password";
 				}
 			} else {
 				//log ip and increment number of failed attempts
@@ -91,7 +120,6 @@
                     'error' => true,
                     'msg' => 'Incorrect Credentials'
                 ];
-//				print "Wrong username and/or password";
 			}
 		}
 	} else {
@@ -100,6 +128,9 @@
                 'msg' => 'One or more blank fields'
 		    ];
     }
+
+
+
 
     header('Content-Type: application/json');
 		echo json_encode($response);

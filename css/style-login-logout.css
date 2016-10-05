@@ -70,6 +70,10 @@ input:focus {
 	outline: none;
 }
 
+.g-recaptcha {
+	padding-bottom: 30px;
+}
+
 
 /* Label */
 

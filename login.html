@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
     <!-- XSS-prevention, not allowed to load resources from other location -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' code.jquery.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' code.jquery.com fonts.googleapis.com *.code.jquery.com fonts.gstatic.com https://apis.google.com https://www.google.com/js/ https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/">
     <title>MMM - Login</title>
 
     <link rel="stylesheet" href="../css/style-login-logout.css">
-
+    <!--  reCaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
@@ -32,14 +33,13 @@
             <input type="password" name="password" id="password"><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LdzbwgUAAAAACaBPL3UDggMtsV9bm4LidzsTvnU"></div>
         <button type="submit" class="button buttonBlue" id="btn-login" name="submit" value="submit" onclick="validateFormLogin()">Login
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
-
         <div class="alert" id="login-error" style="display:none">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
-
         <footer>
             <font size="2px">
                 <center><a href="#" onclick="toggleForm('register')" style="color:#333333; text-decoration:none;" id="registerText">Don't have an account?</a></center>
@@ -65,11 +65,9 @@
         <button type="submit" class="button buttonBlue" id="btn-register" name="submit" value="submit" onclick="validateFormReg()">Sign Up
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
-
         <div class="alert" id="register-error" style="display:none">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
-
         <footer>
             <font size="2px">
                 <center><a href="#" onclick="toggleForm('login')" style="color:#333333; text-decoration:none;" id="registerText">Already have an accoount?</a></center>
