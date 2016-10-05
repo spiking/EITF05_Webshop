@@ -25,7 +25,7 @@ session_start();
     }
 
     if (isset($_POST['productType'])) {
-        if (isset($_POST['ID']) == session_id()) {
+        if (isset($_POST['ID']) && $_POST['ID'] === session_id()) {
             addToCart($_POST['productType']);
         }
     }
@@ -37,7 +37,7 @@ session_start();
     }
 
     if (isset($_POST['empty'])) {
-        if (isset($_POST['ID']) == session_id()) {
+        if (isset($_POST['ID']) && $_POST['ID'] === session_id()) {
           emptyCart();
          }
     }

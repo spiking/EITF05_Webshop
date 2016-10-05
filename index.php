@@ -165,7 +165,7 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
 | 7490 kr</p>
 </span>
                   <p>
-                    <a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a>
+                    <a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" data-token=<?php print session_id()?> onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a>
                     </p>
               </div>
               <div class="card-reveal">
@@ -184,7 +184,7 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
 | 6990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="ZamZung7" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="ZamZung7" id="buyBtn" data-token=<?php print session_id()?> onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -204,7 +204,7 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
 | 4990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="GoogleX" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="GoogleX" id="buyBtn" data-token=<?php print session_id()?> onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -223,7 +223,7 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>iFone 7</b><i class="mdi-navigation-more-vert right"></i>
 | 7490 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="iFone7" id="buyBtn" data-token=<?php print session_id()?> onclick="Materialize.toast('iFone 7 was added to your cart.', 4000);">BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -242,7 +242,7 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>ZamZung 7</b><i class="mdi-navigation-more-vert right"></i>
 | 6990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="ZamZung7" id="buyBtn" onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="ZamZung7" id="buyBtn" data-token=<?php print session_id()?> onclick="Materialize.toast('ZamZung 7 was added to your cart.', 4000);" )>BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">
@@ -262,7 +262,7 @@ if (isset($_SESSION['PAYMENT_COMPLETED'])) {
                 <p class="word-break"><span class="card-title activator grey-text text-darken-4"><b>Google X</b><i class="mdi-navigation-more-vert right"></i>
 | 4990 kr
 </span></p>
-                <p><a class="waves-effect waves-light btn" value="GoogleX" id="buyBtn" onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
+                <p><a class="waves-effect waves-light btn" value="GoogleX" id="buyBtn" data-token=<?php print session_id()?> onclick="Materialize.toast('Google X was added to your cart.', 4000);">BUY IT NOW</a></p>
               </div>
 
               <div class="card-reveal">

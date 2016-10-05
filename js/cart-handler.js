@@ -3,12 +3,13 @@
 $(document).ready(function () {
     $(".waves-effect.waves-light.btn").on('click', function() {
         var product = $(this).attr("value");
+	var token = $(this).attr("data-token");
         $.ajax({
             url: '../php/cart-handler.php'
             , type: 'POST'
             , data: {
                 "productType": product,
-                "ID": document.cookie
+                "ID": token
             }
             , success: function (response) {
                 console.log(response);
@@ -30,13 +31,14 @@ $(document).ready(function() {
         $('#cart-empty-hidden').show();
         $("td.total-price").empty();
         $("td.total-price").append("0 SEK");
+	var token = $(this).attr("data-token");
 
         $.ajax({
             type: 'POST',
             url: '../php/cart-handler.php',
             data: {
                 "empty": "empty",
-                "ID": document.cookie
+                "ID": token
             },
             dataType: 'json',
             success: function(data) {

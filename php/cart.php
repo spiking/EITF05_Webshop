@@ -242,7 +242,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                             </tbody>
                         </table>
                 </div>
-                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn">Empty Cart</button>
+                <button class="waves-effect waves-light btn-large red" style="margin-top:20px;" id="empty-btn" data-token=<?php print session_id()?>>Empty Cart</button>
             </div>
         </div>
 
