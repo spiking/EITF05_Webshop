@@ -1,2 +1,5 @@
 // Drop reviews table
 ';drop table reviews;--
+
+// Insert new user
+';insert into users values("LUL", "LUL", "LUL");--

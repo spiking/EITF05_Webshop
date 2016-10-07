@@ -276,7 +276,7 @@ if(isset($_SESSION['PAYMENT_COMPLETED'])){
                         </div>
                     </div>
 
-                    <input hidden="true" name="token" value="<?php echo $token; ?>" />
+                    <!--<input hidden="true" name="token" value="<?php echo $token; ?>" />-->
 
                     <div class="alert" id="confirm-error" style="display:none"></div>
                     <button class="waves-effect waves-light btn-large green" type="submit" name="submit" value="submit" id="confirm-btn" onclick="validateForm()">Confirm Payment</button>
