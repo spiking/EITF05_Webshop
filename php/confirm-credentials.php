@@ -1,8 +1,7 @@
 <?php
 
 function checkPwdReq($pwd) {
-    return true; //while in development
-    //return strlen($pwd) > 7 && preg_match("#[0-9]+#", $pwd) && preg_match("#[a-z]+#", $pwd) && preg_match("#[A-Z]+#", $pwd);
+    return strlen($pwd) > 7 && preg_match("#[0-9]+#", $pwd) && preg_match("#[a-z]+#", $pwd) && preg_match("#[A-Z]+#", $pwd);
 }
 
 include('database.php');
@@ -16,28 +15,21 @@ if (!isset($_SESSION['ID'])) {
 $name = $_POST['name'];
 $password = $_POST['password'];
 
-// $token_age = time() - $_SESSION['token_time'];
-// $token = $_POST['token'];
-
 $db = new Database();
 $response = [];
 
 if (empty($_SESSION['cart'])) {
 	$response = [
-        'error' => true,
-		'msg' => 'Your cart is empty'
-    ];
+      'error' => true,
+	    'msg' => 'Your cart is empty'
+  ];
 	header('Content-Type: application/json');
 	echo json_encode($response);
 	exit();
 }
 
 if (isset($name) && isset($password)) {
-
-    // $token == $_SESSION['token'] && $token_age < 300
-
     if ($_SESSION['name'] == $name) {
-
         if (!$db->confirmIPAddress($_SERVER['REMOTE_ADDR'])) {
             $response = [
             	'error' => true,

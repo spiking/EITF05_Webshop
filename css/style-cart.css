@@ -2,8 +2,7 @@
     color: #2196F3 !important
 }
 
-header,
-.full-width {
+header, .full-width {
     width: 100%;
     height: 200px;
     background: orange;
@@ -23,8 +22,7 @@ nav ul a {
     padding: 0px 15px;
 }
 
-h1,
-h3 {
+h1, h3 {
     font-weight: 300;
 }
 
@@ -125,8 +123,7 @@ footer {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

@@ -7,15 +7,11 @@ function validateFormLogin() {
 
     var password = document.getElementById("password").value;
 
-    if (usernameReg.test(username)) {
-        console.log("Input username Valid");
-    } else {
+    if (!usernameReg.test(username)) {
         msg = 'Invalid characters in username';
     }
 
-    if (checkPwdReq(password)) {
-        console.log("Input password Valid");
-    } else {
+    if (!checkPwdReq(password)) {
         msg = 'The password must contain at least:</br>8 characters</br>A Number</br>A special character</br>A lower case</br>An upper case';
     }
 
@@ -32,47 +28,37 @@ function validateFormLogin() {
 
 function validateFormReg() {
 
-    console.log("Validate User Input");
-
-    if (!document.getElementById("nameReg") != null) {
+    if (document.getElementById("nameReg") != null) {
         var username = document.getElementById("nameReg").value;
-        console.log(username);
     }
-    if (!document.getElementById("passwordReg") != null) {
+    if (document.getElementById("passwordReg") != null) {
         var password = document.getElementById("passwordReg").value;
-        console.log(password);
     }
     if (document.getElementById("addressReg") != null) {
         var address = document.getElementById("addressReg").value;
-        console.log(address);
     }
 
     var usernameReg = /^[0-9a-zA-Z_.-]+$/;
-    // var addressReg = /^[a-zA-Z0-9\s,'-]*$/;
-    // Add address, annoying for testing
+    var addressReg = /^[a-z\d\-_\s]+$/i;
 
     var msg = "";
 
-    if (usernameReg.test(username)) {
-        console.log("Input username Valid");
-
-    } else {
+    if (!usernameReg.test(username)) {
         msg = 'Invalid characters in username';
     }
 
-    if (checkPwdReq(password)) {
-        console.log("Input password Valid");
-    } else {
+    if (!addressReg.test(address)) {
+        msg = 'Invalid address';
+    }
+
+    if (!checkPwdReq(password)) {
         msg = 'The password must contain at least:</br>8 characters</br>A Number</br>A special character</br>A lower case</br>An upper case';
     }
 
     if (msg.length == 0) {
-        console.log('clicked register button');
         postData('#register-form');
     } else {
         $('#register-error').html(msg);
-        console.log("Invalid input reg form");
-
         $('#register-error').fadeIn(500);
         $('#register-error').delay(3000);
         $('#register-error').fadeOut(500);
@@ -82,12 +68,11 @@ function validateFormReg() {
 }
 
 function checkPwdReq(pwd) {
-    // var nbr = /[0-9]+/;
-    // var special = /[\W]+/;
-    // var lower = /[a-z]+/;
-    // var upper = /[A-Z]+/;
-    // return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
-    return true;
+    var nbr = /[0-9]+/;
+    var special = /[\W]+/;
+    var lower = /[a-z]+/;
+    var upper = /[A-Z]+/;
+    return pwd.length > 7 && nbr.test(pwd) && special.test(pwd) && lower.test(pwd) && upper.test(pwd);
 }
 
 // Login/register user
@@ -100,7 +85,6 @@ function postData(formType) {
         dataType: 'json',
         success: function(data) {
             if (data.error == true) {
-                console.log(data.msg);
 
                 if (formType == "#login-form")
                     var errorType = "#login-error";
@@ -108,7 +92,7 @@ function postData(formType) {
                     var errorType = "#register-error";
 
                 if (data.msg == "Incorrect Credentials") {
-                  grecaptcha.reset();
+                    grecaptcha.reset();
                 }
 
                 $(errorType).html(data.msg);
@@ -117,7 +101,6 @@ function postData(formType) {
                 $(errorType).fadeOut(500);
 
             } else {
-                console.log('Correct credentials.');
                 window.location.href = 'index.php';
             }
         },
@@ -125,10 +108,10 @@ function postData(formType) {
 
         },
         complete: function() {
-            console.log('ajax call completed');
+            // console.log('ajax call completed');
         },
         error: function(exception) {
-            console.log(exception);
+            // console.log(exception);
         }
     });
     return false;

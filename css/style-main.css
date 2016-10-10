@@ -10,9 +10,7 @@
     padding: 0 15px;
 }
 
-#home,
-#products,
-#team {
+#home, #products, #team {
     padding-top: 4rem;
 }
 
@@ -275,8 +273,7 @@ nav ul a {
     }
 }
 
-input,
-textarea {
+input, textarea {
     border-bottom: 1px solid #fff;
 }
 

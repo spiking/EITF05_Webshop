@@ -4,8 +4,6 @@ DROP TABLE IF EXISTS LoginAttempts;
 DROP TABLE IF EXISTS Reviews;
 SET foreign_key_checks = 1;
 
-/**Table creation*/
-
 CREATE TABLE Users(
 	userName varchar(20),
     password varChar(255) NOT NULL,
@@ -23,11 +21,6 @@ CREATE TABLE LoginAttempts(
 CREATE TABLE Reviews(
 	id int AUTO_INCREMENT,
 	user varchar(20) NOT NULL,
-	review varchar(100) NOT NULL,
+	review varchar(10000) NOT NULL,
 	PRIMARY KEY (id)
 );
-
-/**Test user*/
-
-/*INSERT INTO Users VALUES('SvenTheKingXXX', 'pw', '1111111111111111', 'gangsterstreet 69');
-*/
