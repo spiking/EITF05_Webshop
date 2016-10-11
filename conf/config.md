@@ -14,4 +14,5 @@ httpd.conf
 TraceRoute = Off
 Deny, Allow
 Set ServerToken = Prod
+Include /path-to-apache-extra-conf/httpd-ssl.conf
 ```
