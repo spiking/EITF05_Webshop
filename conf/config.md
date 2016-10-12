@@ -12,7 +12,6 @@ session.cookie_secure = 1
 httpd.conf
 ```sh
 TraceRoute = Off
-Deny, Allow
 Set ServerToken = Prod
 Include /path-to-apache-extra-conf/httpd-ssl.conf
 ```
