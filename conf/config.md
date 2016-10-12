@@ -12,6 +12,6 @@ session.cookie_secure = 1
 httpd.conf
 ```sh
 TraceEnable off
-ServerToken  Prod
+ServerTokens Prod
 Include /path-to-apache-extra-conf/httpd-ssl.conf
 ```
